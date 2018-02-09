@@ -7,9 +7,16 @@
 //
 
 import UIKit
-import CoreLocation
+import MapKit
 
 class MapVC: UIViewController {
+    
+    // MARK: - IBOutles
+    
+    
+    // MARK: - Variables
+    
+    // MARK: - Application runtime
 
     override func viewDidLoad() {
         super.viewDidLoad()

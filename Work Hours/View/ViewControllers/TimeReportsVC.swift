@@ -9,8 +9,6 @@
 import UIKit
 
 class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    
 
     // MARK: - IBOutlets
     @IBOutlet weak var noTimeReportsLabel: UILabel!
