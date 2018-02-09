@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
 
     // MARK: - IBOutlets
     @IBOutlet weak var noTimeReportsLabel: UILabel!
@@ -24,8 +24,7 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(segue), name: NSNotification.Name(rawValue: "NewTimeReport"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +36,33 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
     }
     
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "popoverSegue" {
+            let popVC = segue.destination
+            popVC.modalPresentationStyle = .popover
+            popVC.popoverPresentationController?.delegate = self
+        }
+    }
+    
+    @IBAction func unwindToTimeReports(segue: UIStoryboardSegue) {
+//        if segue.identifier == "createNewTimeReport" {
+//            performSegue(withIdentifier: "newTimeReportSegue", sender: nil)
+//        }
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func addBtnPressed(_ sender: Any) {
+//        performSegue(withIdentifier: "newTimeReportSegue", sender: nil)
+    }
+    
+    // MARK: - Functions
+    
+    @objc func segue() {
+        performSegue(withIdentifier: "newTimeReportSegue", sender: nil)
+    }
     
     // MARK: - UITableView DataSource & Delegate
     
@@ -47,6 +73,13 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
+    
+    // MARK: - Popover Delegate
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+    
 
 
 }

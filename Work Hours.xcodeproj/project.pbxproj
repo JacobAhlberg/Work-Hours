@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49154455202DDAC2001CC678 /* AdditionalFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49154454202DDAC2001CC678 /* AdditionalFileCell.swift */; };
+		49154458202DEE69001CC678 /* PopoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49154457202DEE69001CC678 /* PopoverVC.swift */; };
 		494ED1B1202B4BEC004C7CDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494ED1B0202B4BEC004C7CDD /* AppDelegate.swift */; };
 		494ED1B3202B4BEC004C7CDD /* TimeReportsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494ED1B2202B4BEC004C7CDD /* TimeReportsVC.swift */; };
 		494ED1B6202B4BEC004C7CDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 494ED1B4202B4BEC004C7CDD /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		49154454202DDAC2001CC678 /* AdditionalFileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalFileCell.swift; sourceTree = "<group>"; };
+		49154457202DEE69001CC678 /* PopoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverVC.swift; sourceTree = "<group>"; };
 		494ED1AD202B4BEC004C7CDD /* Work Hours.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Work Hours.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		494ED1B0202B4BEC004C7CDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		494ED1B2202B4BEC004C7CDD /* TimeReportsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeReportsVC.swift; sourceTree = "<group>"; };
@@ -39,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49154456202DDC27001CC678 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				49154454202DDAC2001CC678 /* AdditionalFileCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		494ED1A4202B4BEC004C7CDD = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +75,7 @@
 				49B5B6FD202B52F100ED4897 /* View */,
 				49B5B6FF202B530600ED4897 /* ViewControllers */,
 				49B5B6FC202B52E800ED4897 /* Resources */,
+				494ED1C4202B4C3D004C7CDD /* Database */,
 			);
 			path = "Work Hours";
 			sourceTree = "<group>";
@@ -71,7 +84,8 @@
 			isa = PBXGroup;
 			children = (
 			);
-			path = Database;
+			name = Database;
+			path = Resources/Database;
 			sourceTree = "<group>";
 		};
 		49B5B6FC202B52E800ED4897 /* Resources */ = {
@@ -79,7 +93,6 @@
 			children = (
 				494ED1BC202B4BEC004C7CDD /* Info.plist */,
 				494ED1B0202B4BEC004C7CDD /* AppDelegate.swift */,
-				494ED1C4202B4C3D004C7CDD /* Database */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -87,6 +100,7 @@
 		49B5B6FD202B52F100ED4897 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				49154456202DDC27001CC678 /* Cells */,
 				49B5B700202B532500ED4897 /* Storyboard */,
 			);
 			path = View;
@@ -106,6 +120,7 @@
 				494ED1B2202B4BEC004C7CDD /* TimeReportsVC.swift */,
 				49B5B701202B5DAB00ED4897 /* NewTimeReportTVC.swift */,
 				49B5B703202B5F8A00ED4897 /* MapVC.swift */,
+				49154457202DEE69001CC678 /* PopoverVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -113,8 +128,8 @@
 		49B5B700202B532500ED4897 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				494ED1B9202B4BEC004C7CDD /* LaunchScreen.storyboard */,
 				494ED1B4202B4BEC004C7CDD /* Main.storyboard */,
+				494ED1B9202B4BEC004C7CDD /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -191,9 +206,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49154455202DDAC2001CC678 /* AdditionalFileCell.swift in Sources */,
 				494ED1B3202B4BEC004C7CDD /* TimeReportsVC.swift in Sources */,
 				49B5B704202B5F8A00ED4897 /* MapVC.swift in Sources */,
 				49B5B702202B5DAB00ED4897 /* NewTimeReportTVC.swift in Sources */,
+				49154458202DEE69001CC678 /* PopoverVC.swift in Sources */,
 				494ED1B1202B4BEC004C7CDD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

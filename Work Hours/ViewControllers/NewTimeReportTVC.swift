@@ -10,17 +10,19 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapViewDelegate {
-
+class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    
     // MARK: - IBOutles
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var appendicesImageView: UIImageView!
+    @IBOutlet weak var additionalFileCollectionView: UICollectionView!
     
     // MARK: - Variables
     var locationManager = CLLocationManager()
-    
     var newTimeReport = true
+    
+    var additionalFilesArray: [UIImage] = []
     
     
     // MARK: - Application runtime
@@ -28,8 +30,11 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     override func viewDidLoad() {
         super.viewDidLoad()
         findUserLocation()
-        
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        additionalFileCollectionView.reloadData()
     }
     
     // MARK: - IBActions
@@ -37,10 +42,25 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     @IBAction func tappedMap(_ sender: Any) {
         performSegue(withIdentifier: "mapSegue", sender: nil)
     }
+    
     @IBAction func cameraBtnWasPressed(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
     }
     
     @IBAction func libraryBtnWasPressed(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }
     }
     
     
@@ -87,6 +107,29 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         return annotationView
     }
     
+    // MARK: - ImagePickerController delegate
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.additionalFilesArray.append(image)
+        }
+        dismiss(animated: true) {
+            self.additionalFileCollectionView.reloadData()
+        }
+    }
+    
+    
+    // MARK: - CollectionView Delegate & Datasource
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return additionalFilesArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "additionalFileCell", for: indexPath) as? AdditionalFileCell else { return UICollectionViewCell() }
+        cell.imageView.image = additionalFilesArray[indexPath.row]
+        return cell
+    }
     
     
 }
