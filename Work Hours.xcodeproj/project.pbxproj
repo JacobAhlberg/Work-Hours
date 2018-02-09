@@ -43,6 +43,7 @@
 			isa = PBXGroup;
 			children = (
 				494ED1AF202B4BEC004C7CDD /* Work Hours */,
+				494ED1B7202B4BEC004C7CDD /* Assets.xcassets */,
 				494ED1AE202B4BEC004C7CDD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,13 +59,10 @@
 		494ED1AF202B4BEC004C7CDD /* Work Hours */ = {
 			isa = PBXGroup;
 			children = (
-				49B5B700202B532500ED4897 /* Storyboard */,
-				494ED1B0202B4BEC004C7CDD /* AppDelegate.swift */,
-				494ED1B7202B4BEC004C7CDD /* Assets.xcassets */,
-				494ED1C4202B4C3D004C7CDD /* Database */,
-				494ED1BC202B4BEC004C7CDD /* Info.plist */,
-				49B5B6FC202B52E800ED4897 /* Resources */,
+				49B5B6FE202B52FE00ED4897 /* Model */,
 				49B5B6FD202B52F100ED4897 /* View */,
+				49B5B6FF202B530600ED4897 /* ViewControllers */,
+				49B5B6FC202B52E800ED4897 /* Resources */,
 			);
 			path = "Work Hours";
 			sourceTree = "<group>";
@@ -79,6 +77,9 @@
 		49B5B6FC202B52E800ED4897 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				494ED1BC202B4BEC004C7CDD /* Info.plist */,
+				494ED1B0202B4BEC004C7CDD /* AppDelegate.swift */,
+				494ED1C4202B4C3D004C7CDD /* Database */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -86,8 +87,7 @@
 		49B5B6FD202B52F100ED4897 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				49B5B6FF202B530600ED4897 /* ViewControllers */,
-				49B5B6FE202B52FE00ED4897 /* Model */,
+				49B5B700202B532500ED4897 /* Storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -96,7 +96,8 @@
 			isa = PBXGroup;
 			children = (
 			);
-			path = Model;
+			name = Model;
+			path = View/Model;
 			sourceTree = "<group>";
 		};
 		49B5B6FF202B530600ED4897 /* ViewControllers */ = {
@@ -332,7 +333,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J8C2X2WW56;
-				INFOPLIST_FILE = "Work Hours/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Work Hours/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "se.jacahl.Work-Hours";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -347,7 +348,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J8C2X2WW56;
-				INFOPLIST_FILE = "Work Hours/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Work Hours/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "se.jacahl.Work-Hours";
 				PRODUCT_NAME = "$(TARGET_NAME)";
