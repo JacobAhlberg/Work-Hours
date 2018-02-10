@@ -17,6 +17,8 @@
 		49B5B702202B5DAB00ED4897 /* NewTimeReportTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B5B701202B5DAB00ED4897 /* NewTimeReportTVC.swift */; };
 		49B5B704202B5F8A00ED4897 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B5B703202B5F8A00ED4897 /* MapVC.swift */; };
 		AC0C0C23202EF2EA009D2D43 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C22202EF2EA009D2D43 /* Buttons.swift */; };
+		AC0C0C25202F0DB1009D2D43 /* timerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C24202F0DB1009D2D43 /* timerVC.swift */; };
+		AC0C0C28202F3136009D2D43 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C27202F3136009D2D43 /* Functions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		49B5B701202B5DAB00ED4897 /* NewTimeReportTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTimeReportTVC.swift; sourceTree = "<group>"; };
 		49B5B703202B5F8A00ED4897 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		AC0C0C22202EF2EA009D2D43 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		AC0C0C24202F0DB1009D2D43 /* timerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timerVC.swift; sourceTree = "<group>"; };
+		AC0C0C27202F3136009D2D43 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,7 @@
 		494ED1AF202B4BEC004C7CDD /* Work Hours */ = {
 			isa = PBXGroup;
 			children = (
+				AC0C0C26202F312B009D2D43 /* Globals */,
 				AC0C0C21202EF2D8009D2D43 /* Model */,
 				49B5B6FD202B52F100ED4897 /* View */,
 				49B5B6FF202B530600ED4897 /* ViewControllers */,
@@ -115,6 +120,7 @@
 				49B5B701202B5DAB00ED4897 /* NewTimeReportTVC.swift */,
 				49B5B703202B5F8A00ED4897 /* MapVC.swift */,
 				49154457202DEE69001CC678 /* PopoverVC.swift */,
+				AC0C0C24202F0DB1009D2D43 /* timerVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -134,6 +140,14 @@
 				AC0C0C22202EF2EA009D2D43 /* Buttons.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		AC0C0C26202F312B009D2D43 /* Globals */ = {
+			isa = PBXGroup;
+			children = (
+				AC0C0C27202F3136009D2D43 /* Functions.swift */,
+			);
+			path = Globals;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +224,8 @@
 			files = (
 				AC0C0C23202EF2EA009D2D43 /* Buttons.swift in Sources */,
 				49154455202DDAC2001CC678 /* AdditionalFileCell.swift in Sources */,
+				AC0C0C28202F3136009D2D43 /* Functions.swift in Sources */,
+				AC0C0C25202F0DB1009D2D43 /* timerVC.swift in Sources */,
 				494ED1B3202B4BEC004C7CDD /* TimeReportsVC.swift in Sources */,
 				49B5B704202B5F8A00ED4897 /* MapVC.swift in Sources */,
 				49B5B702202B5DAB00ED4897 /* NewTimeReportTVC.swift in Sources */,

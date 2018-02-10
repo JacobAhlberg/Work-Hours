@@ -28,6 +28,12 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         NotificationCenter.default.addObserver(self, selector: #selector(timerSegue), name: NSNotification.Name(rawValue: "NewTimerStart"), object: nil)
         
+        if let defaultsDate = UserDefaults.standard.object(forKey: "timerStartValue") {
+            let startTime = defaultsDate as! Date
+            if startTime < Date() {
+                performSegue(withIdentifier: "timerSegue", sender: nil)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

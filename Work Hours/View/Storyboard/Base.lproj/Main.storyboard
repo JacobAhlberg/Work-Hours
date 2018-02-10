@@ -630,10 +630,10 @@
             </objects>
             <point key="canvasLocation" x="2156" y="180"/>
         </scene>
-        <!--View Controller-->
+        <!--TimerVC-->
         <scene sceneID="P9j-h8-IWS">
             <objects>
-                <viewController id="KOu-co-q87" sceneMemberID="viewController">
+                <viewController id="KOu-co-q87" customClass="timerVC" customModule="Work_Hours" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qf9-rS-rP2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -679,28 +679,86 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="shadowing" value="NO"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="contouring" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startTimerPressed:" destination="KOu-co-q87" eventType="touchUpInside" id="gcW-mv-oHg"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UN4-wC-EEK">
+                                <rect key="frame" x="0.0" y="88" width="375" height="70"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="EfB-5o-7EF">
+                                        <rect key="frame" x="87.000000000000014" y="10.999999999999996" width="200.33333333333337" height="49.666666666666657"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registration is active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwg-cU-eC9">
+                                                <rect key="frame" x="22.333333333333329" y="0.0" width="155.66666666666669" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Started: 2017-02-10 13:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUD-Tq-Gg7">
+                                                <rect key="frame" x="0.0" y="29.333333333333343" width="200.33333333333334" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.90196078430000004" green="0.12549019610000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="EfB-5o-7EF" firstAttribute="centerX" secondItem="UN4-wC-EEK" secondAttribute="centerX" id="KAx-2Z-4WK"/>
+                                    <constraint firstAttribute="height" constant="70" id="Ra9-sP-KKe"/>
+                                    <constraint firstItem="EfB-5o-7EF" firstAttribute="centerY" secondItem="UN4-wC-EEK" secondAttribute="centerY" id="tic-PF-he8"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTo-2d-Kfl" customClass="outlinedButton" customModule="Work_Hours" customModuleProvider="target">
+                                <rect key="frame" x="88" y="542" width="199" height="61.000000000000057"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
+                                <inset key="contentEdgeInsets" minX="30" minY="15" maxX="30" maxY="15"/>
+                                <state key="normal" title="START BREAK">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shadowing" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="contouring" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="BreakBtnPressed:" destination="KOu-co-q87" eventType="touchUpInside" id="Taz-5q-PqY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="UN4-wC-EEK" firstAttribute="trailing" secondItem="2J4-jK-CrC" secondAttribute="trailing" id="6iD-Op-AUn"/>
                             <constraint firstItem="2J4-jK-CrC" firstAttribute="trailing" secondItem="ca3-Bt-P1N" secondAttribute="trailing" constant="8" id="9W7-xv-yjN"/>
                             <constraint firstItem="wev-OV-7Iq" firstAttribute="centerY" secondItem="ca3-Bt-P1N" secondAttribute="centerY" id="ETd-Xv-WCC"/>
                             <constraint firstItem="hJt-er-ub2" firstAttribute="centerX" secondItem="qf9-rS-rP2" secondAttribute="centerX" id="Epj-Sb-jD3"/>
                             <constraint firstItem="VrU-FU-I6a" firstAttribute="trailing" secondItem="2J4-jK-CrC" secondAttribute="trailing" id="IeT-9J-twa"/>
                             <constraint firstItem="ca3-Bt-P1N" firstAttribute="centerY" secondItem="qf9-rS-rP2" secondAttribute="centerY" id="NdJ-IP-alX"/>
+                            <constraint firstItem="UN4-wC-EEK" firstAttribute="top" secondItem="2J4-jK-CrC" secondAttribute="top" id="U0L-sX-FMO"/>
                             <constraint firstItem="VrU-FU-I6a" firstAttribute="leading" secondItem="qf9-rS-rP2" secondAttribute="leading" id="V7Q-aB-4pO"/>
                             <constraint firstAttribute="bottom" secondItem="VrU-FU-I6a" secondAttribute="bottom" id="Xp6-rj-TNP"/>
                             <constraint firstItem="ca3-Bt-P1N" firstAttribute="leading" secondItem="wev-OV-7Iq" secondAttribute="trailing" constant="8" id="bO7-jy-icu"/>
+                            <constraint firstItem="UN4-wC-EEK" firstAttribute="leading" secondItem="2J4-jK-CrC" secondAttribute="leading" id="jIy-5O-SMD"/>
                             <constraint firstItem="wev-OV-7Iq" firstAttribute="leading" secondItem="2J4-jK-CrC" secondAttribute="leading" constant="8" id="pw1-AT-eWs"/>
                             <constraint firstItem="hJt-er-ub2" firstAttribute="top" secondItem="ca3-Bt-P1N" secondAttribute="bottom" constant="30" id="uCB-bP-MWH"/>
                             <constraint firstItem="VrU-FU-I6a" firstAttribute="top" secondItem="qf9-rS-rP2" secondAttribute="top" id="weV-JY-zVg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2J4-jK-CrC"/>
                     </view>
+                    <connections>
+                        <outlet property="activeLogView" destination="UN4-wC-EEK" id="yUB-HX-Aea"/>
+                        <outlet property="breakBtn" destination="NTo-2d-Kfl" id="HDG-fG-8Rm"/>
+                        <outlet property="registrationLbl" destination="fwg-cU-eC9" id="DqF-YH-SSu"/>
+                        <outlet property="startTimeLbl" destination="HUD-Tq-Gg7" id="rpC-Ip-QQm"/>
+                        <outlet property="startTimerBtn" destination="hJt-er-ub2" id="hVv-kP-nTf"/>
+                        <segue destination="bdp-CN-fau" kind="show" identifier="newTimeReportSegue" id="waF-NQ-lcL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uIo-Va-KHq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1343" y="476"/>
+            <point key="canvasLocation" x="1341.5999999999999" y="475.86206896551727"/>
         </scene>
         <!--MapVC-->
         <scene sceneID="sc8-so-fMy">
@@ -753,6 +811,7 @@
         <image name="timer" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sos-w2-pJl"/>
+        <segue reference="ITL-OY-ZpS"/>
+        <segue reference="waF-NQ-lcL"/>
     </inferredMetricsTieBreakers>
 </document>
