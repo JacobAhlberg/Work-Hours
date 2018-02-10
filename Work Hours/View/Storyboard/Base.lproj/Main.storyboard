@@ -81,6 +81,7 @@
                         <outlet property="noTimeReportsLabel" destination="XfE-C5-Wc4" id="M9T-22-dqA"/>
                         <outlet property="timeReportsTableView" destination="Vnf-rQ-Cj6" id="YB2-cF-PdT"/>
                         <segue destination="bdp-CN-fau" kind="show" identifier="newTimeReportSegue" id="vCX-YI-RNi"/>
+                        <segue destination="KOu-co-q87" kind="show" identifier="timerSegue" id="t0n-3V-wRA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -95,12 +96,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Cd-ho-Pci">
-                                <rect key="frame" x="16" y="20" width="46" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ny rapport" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrc-yy-xAN">
+                                <rect key="frame" x="11" y="69" width="88" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ny timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vx-nY-sC6">
+                                <rect key="frame" x="112" y="69" width="73" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21o-fn-xWR">
+                                <rect key="frame" x="11" y="14" width="88" height="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="newTimeReportPressed:" destination="PYp-4n-3Ou" eventType="touchUpInside" id="Cub-oJ-Ojt"/>
+                                    <action selector="newTimeReportPressed:" destination="PYp-4n-3Ou" eventType="touchUpInside" id="G23-tK-NIH"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="timer" translatesAutoresizingMaskIntoConstraints="NO" id="lPd-Lj-WAj">
+                                <rect key="frame" x="128" y="27" width="41" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="document" translatesAutoresizingMaskIntoConstraints="NO" id="IV0-DZ-5YY">
+                                <rect key="frame" x="35" y="27" width="41" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4W2-Bw-55N">
+                                <rect key="frame" x="104" y="14" width="88" height="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="timerBtnPressed:" destination="PYp-4n-3Ou" eventType="touchUpInside" id="ouG-kj-dU4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -114,7 +143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pah-X7-pSU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="694" y="-340"/>
+            <point key="canvasLocation" x="693.75" y="-340.14084507042253"/>
         </scene>
         <!--New Time Report-->
         <scene sceneID="Av2-2e-43c">
@@ -619,6 +648,21 @@
             </objects>
             <point key="canvasLocation" x="2205" y="-505"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="P9j-h8-IWS">
+            <objects>
+                <viewController id="KOu-co-q87" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qf9-rS-rP2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="2J4-jK-CrC"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uIo-Va-KHq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1404" y="639"/>
+        </scene>
         <!--MapVC-->
         <scene sceneID="sc8-so-fMy">
             <objects>
@@ -664,4 +708,8 @@
             <point key="canvasLocation" x="-338" y="133"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="document" width="59" height="59"/>
+        <image name="timer" width="60" height="60"/>
+    </resources>
 </document>

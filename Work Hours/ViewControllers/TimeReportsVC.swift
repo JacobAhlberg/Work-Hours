@@ -24,7 +24,10 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(segue), name: NSNotification.Name(rawValue: "NewTimeReport"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(blankReportSegue), name: NSNotification.Name(rawValue: "NewTimeReport"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(timerSegue), name: NSNotification.Name(rawValue: "NewTimerStart"), object: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,8 +63,12 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     // MARK: - Functions
     
-    @objc func segue() {
+    @objc func blankReportSegue() {
         performSegue(withIdentifier: "newTimeReportSegue", sender: nil)
+    }
+    
+    @objc func timerSegue() {
+        performSegue(withIdentifier: "timerSegue", sender: nil)
     }
     
     // MARK: - UITableView DataSource & Delegate

@@ -18,7 +18,7 @@ class PopoverVC: UIViewController {
     
     @IBAction func newTimeReportPressed(_ sender: Any) {
         NotificationCenter.default.post(name: NSNotification.Name("NewTimeReport"), object: nil)
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,15 +26,11 @@ class PopoverVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func timerBtnPressed(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name("NewTimerStart"), object: nil)
+        self.dismiss(animated: false, completion: nil)
     }
-    */
+    
+
 
 }
