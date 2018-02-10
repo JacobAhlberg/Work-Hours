@@ -22,11 +22,10 @@ class timerVC: UIViewController {
     var isActive = false
     var startTime: Date = Date()
     var breakIsActive: Bool = false
-    var startBreakTime: Date = Date(timeIntervalSince1970: 0)
+    var startBreakTime: Date = Date()
     var totalBreakTime : Double = 0
     
     let dateFormatter = DateFormatter()
-    var restoredBreak = false
     
     //MARK: Strings that are being used multiple times
     let stopTimerString = NSLocalizedString("STOP TIMER", comment: "STOP TIMER")
@@ -55,16 +54,17 @@ class timerVC: UIViewController {
             startTime = defaultsDate as! Date
             if startTime < Date() {
                 isActive = true
-                restoredBreak = true
             }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if breakIsActive {
-            continueTimer(isBreak: true)
-        } else {
-            continueTimer(isBreak: false)
+        if isActive {
+            if breakIsActive {
+                continueTimer(isBreak: true)
+            } else {
+                continueTimer(isBreak: false)
+            }
         }
     }
     
@@ -75,6 +75,9 @@ class timerVC: UIViewController {
     
     @IBAction func BreakBtnPressed(_ sender: Any) {
         breakIsActive = !breakIsActive
+        if !breakIsActive {
+            startBreakTime = Date()
+        }
         saveUserDefaults()
         activateBreak()
     }
@@ -88,6 +91,9 @@ class timerVC: UIViewController {
             isActive = false
             startTimerBtn.setTitle(startTimerString, for: .normal)
             
+            breakBtn.isEnabled = false
+            breakBtn.alpha = 0.5
+            
             //Calculate total time since timer started
             let finishedTime = Date()
             let resultTime = finishedTime.timeIntervalSince(startTime)
@@ -100,7 +106,6 @@ class timerVC: UIViewController {
             let alert = UIAlertController(title: "Timer has been stopped", message: "Working time: \(resultH) hours and \(resultM) minutes. \nBreak time: \(breakH) hours and \(breakM) minutes.", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction.init(title: "Discard", style: .destructive, handler: { (action) in
                 self.resetData()
-                
             }))
             alert.addAction(UIAlertAction.init(title: "Continue timer", style: .default, handler: {
                 (action) in
@@ -135,18 +140,14 @@ class timerVC: UIViewController {
     func activateBreak() {
         if breakIsActive {
             // This is executed if the break timer is being started
-            if restoredBreak {
-                startBreakTime = Date()
-                saveUserDefaults()
-            }
             startTimerBtn.isEnabled = false
             startTimerBtn.alpha = 0.5
             activeLogView.backgroundColor = UIColor(red: 114/255, green: 175/255, blue: 207/255, alpha: 1)
             breakBtn.setTitle(NSLocalizedString("STOP BREAK", comment: "STOP BREAK"), for: .normal)
-            startTimeLbl.text = NSLocalizedString("Break started: \(dateFormatter.string(from: Date()))", comment: "Started: [date inserted here]")
             registrationLbl.text = NSLocalizedString("Break is active", comment: "Break is active")
             startTimerBtn.setTitle(stopTimerString, for: .normal)
             isActive = true
+            startTimeLbl.text = NSLocalizedString("Started break: \(dateFormatter.string(from: startBreakTime))", comment: "Started: [date inserted here]")
         } else {
             // This is exectued to stop the break timer
             activeLogView.backgroundColor = UIColor(red: 230/255, green: 32/255, blue: 68/255, alpha: 1)
@@ -154,7 +155,6 @@ class timerVC: UIViewController {
             breakBtn.setTitle(NSLocalizedString("START BREAK", comment: "START BREAK"), for: .normal)
             startTimerBtn.isEnabled = true
             startTimerBtn.alpha = 1
-            restoredBreak = false
             let finishedTime = Date()
             let resultBreak = finishedTime.timeIntervalSince(startBreakTime)
             totalBreakTime += resultBreak
@@ -168,6 +168,7 @@ class timerVC: UIViewController {
         // This is executed if the user wants to continue after pressing "stop timer"
         activeLogView.isHidden = false
         if isBreak {
+            print(startBreakTime)
             startTimeLbl.text = NSLocalizedString("Started break: \(dateFormatter.string(from: startBreakTime))", comment: "Started: [date inserted here]")
         } else {
             isActive = true
