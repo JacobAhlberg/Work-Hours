@@ -21,12 +21,12 @@ class timerVC: UIViewController {
     //MARK: class variables
     var isActive = false
     var startTime: Date = Date()
-    
-    let dateFormatter = DateFormatter()
-    
     var breakIsActive: Bool = false
     var startBreakTime: Date = Date(timeIntervalSince1970: 0)
     var totalBreakTime : Double = 0
+    
+    let dateFormatter = DateFormatter()
+    var restoredBreak = false
     
     //MARK: Strings that are being used multiple times
     let stopTimerString = NSLocalizedString("STOP TIMER", comment: "STOP TIMER")
@@ -50,23 +50,22 @@ class timerVC: UIViewController {
             startBreakTime = defaultsStartBreakTime as! Date
         }
         
-        if breakIsActive {
-            continueTimer(isBreak: true)
-        } else {
-            continueTimer(isBreak: false)
-        }
-        
         // Get user defaults
         if let defaultsDate = UserDefaults.standard.object(forKey: userDefTimer) {
             startTime = defaultsDate as! Date
             if startTime < Date() {
                 isActive = true
+                restoredBreak = true
             }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        if breakIsActive {
+            continueTimer(isBreak: true)
+        } else {
+            continueTimer(isBreak: false)
+        }
     }
     
     //MARK: - IB Actions
@@ -136,7 +135,7 @@ class timerVC: UIViewController {
     func activateBreak() {
         if breakIsActive {
             // This is executed if the break timer is being started
-            if totalBreakTime == 0 {
+            if restoredBreak {
                 startBreakTime = Date()
                 saveUserDefaults()
             }
@@ -155,9 +154,10 @@ class timerVC: UIViewController {
             breakBtn.setTitle(NSLocalizedString("START BREAK", comment: "START BREAK"), for: .normal)
             startTimerBtn.isEnabled = true
             startTimerBtn.alpha = 1
+            restoredBreak = false
             let finishedTime = Date()
             let resultBreak = finishedTime.timeIntervalSince(startBreakTime)
-            totalBreakTime = totalBreakTime + resultBreak
+            totalBreakTime += resultBreak
             saveUserDefaults()
             startTimerBtn.setTitle(stopTimerString, for: .normal)
             continueTimer(isBreak: false)
