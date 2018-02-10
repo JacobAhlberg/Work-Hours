@@ -142,6 +142,7 @@ class timerVC: UIViewController {
             // This is executed if the break timer is being started
             startTimerBtn.isEnabled = false
             startTimerBtn.alpha = 0.5
+            startBreakTime = Date()
             activeLogView.backgroundColor = UIColor(red: 114/255, green: 175/255, blue: 207/255, alpha: 1)
             breakBtn.setTitle(NSLocalizedString("STOP BREAK", comment: "STOP BREAK"), for: .normal)
             registrationLbl.text = NSLocalizedString("Break is active", comment: "Break is active")
