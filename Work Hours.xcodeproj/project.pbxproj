@@ -16,6 +16,7 @@
 		494ED1BB202B4BEC004C7CDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 494ED1B9202B4BEC004C7CDD /* LaunchScreen.storyboard */; };
 		49B5B702202B5DAB00ED4897 /* NewTimeReportTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B5B701202B5DAB00ED4897 /* NewTimeReportTVC.swift */; };
 		49B5B704202B5F8A00ED4897 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B5B703202B5F8A00ED4897 /* MapVC.swift */; };
+		AC0C0C23202EF2EA009D2D43 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C22202EF2EA009D2D43 /* Buttons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		494ED1BC202B4BEC004C7CDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49B5B701202B5DAB00ED4897 /* NewTimeReportTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTimeReportTVC.swift; sourceTree = "<group>"; };
 		49B5B703202B5F8A00ED4897 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		AC0C0C22202EF2EA009D2D43 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +73,7 @@
 		494ED1AF202B4BEC004C7CDD /* Work Hours */ = {
 			isa = PBXGroup;
 			children = (
-				49B5B6FE202B52FE00ED4897 /* Model */,
+				AC0C0C21202EF2D8009D2D43 /* Model */,
 				49B5B6FD202B52F100ED4897 /* View */,
 				49B5B6FF202B530600ED4897 /* ViewControllers */,
 				49B5B6FC202B52E800ED4897 /* Resources */,
@@ -106,14 +108,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		49B5B6FE202B52FE00ED4897 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
-			path = View/Model;
-			sourceTree = "<group>";
-		};
 		49B5B6FF202B530600ED4897 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +126,14 @@
 				494ED1B9202B4BEC004C7CDD /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		AC0C0C21202EF2D8009D2D43 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC0C0C22202EF2EA009D2D43 /* Buttons.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC0C0C23202EF2EA009D2D43 /* Buttons.swift in Sources */,
 				49154455202DDAC2001CC678 /* AdditionalFileCell.swift in Sources */,
 				494ED1B3202B4BEC004C7CDD /* TimeReportsVC.swift in Sources */,
 				49B5B704202B5F8A00ED4897 /* MapVC.swift in Sources */,
