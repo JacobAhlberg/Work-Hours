@@ -18,7 +18,7 @@ class timerVC: UIViewController {
     @IBOutlet weak var startTimeLbl: UILabel!
     @IBOutlet weak var registrationLbl: UILabel!
     
-    //MARK: class variables
+    //MARK: - Class variables
     var isActive = false
     var startTime: Date = Date()
     var breakIsActive: Bool = false
@@ -36,7 +36,7 @@ class timerVC: UIViewController {
     let breakActiveString = NSLocalizedString("Break is active", comment: "Break is active")
     let startedString = NSLocalizedString("Started : ", comment: "Started : ")
     
-    
+    //MARK: User Defaults strings
     let userDefTimer = "timerStartValue"
     let userDefBreak = "totalBreakTime"
     let userDefBreakBool = "breakBool"
@@ -106,7 +106,6 @@ class timerVC: UIViewController {
             let (resultH,resultM) = secondsToHoursMinutesSeconds(seconds: Int(resultTime))
             
             //Calculate break time
-            print(totalBreakTime)
             let (breakH,breakM) = secondsToHoursMinutesSeconds(seconds: Int(totalBreakTime))
             
             //Show alert after timer has stopped
@@ -167,10 +166,6 @@ class timerVC: UIViewController {
             let finishedTime = Date()
             let resultBreak = finishedTime.timeIntervalSince(startBreakTime)
             totalBreakTime += resultBreak
-            print(startBreakTime)
-            print(finishedTime)
-            print(resultBreak)
-            print(totalBreakTime)
             saveUserDefaults()
             startTimerBtn.setTitle(stopTimerString, for: .normal)
             continueTimer(isBreak: false)

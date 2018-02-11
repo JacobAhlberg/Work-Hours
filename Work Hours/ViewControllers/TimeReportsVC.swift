@@ -13,7 +13,7 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     // MARK: - IBOutlets
     @IBOutlet weak var noTimeReportsLabel: UILabel!
     @IBOutlet weak var timeReportsTableView: UITableView!
-    
+    @IBOutlet weak var activeRegView: UIView!
     
     // MARK: - Variables
     var timeReportsArray: [String] = []
@@ -33,6 +33,18 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             if startTime < Date() {
                 performSegue(withIdentifier: "timerSegue", sender: nil)
             }
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let defaultsDate = UserDefaults.standard.object(forKey: "timerStartValue") {
+            let startTime = defaultsDate as! Date
+            if startTime < Date() {
+                activeRegView.isHidden = false
+                pulsate(view: activeRegView)
+            }
+        } else {
+            activeRegView.isHidden = true
         }
     }
     
@@ -67,6 +79,11 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
 //        performSegue(withIdentifier: "newTimeReportSegue", sender: nil)
     }
     
+    @IBAction func activeRegViewPressed(_ sender: Any) {
+        performSegue(withIdentifier: "timerSegue", sender: nil)
+    }
+    
+    
     // MARK: - Functions
     
     @objc func blankReportSegue() {
@@ -74,6 +91,10 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     @objc func timerSegue() {
+        performSegue(withIdentifier: "timerSegue", sender: nil)
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
         performSegue(withIdentifier: "timerSegue", sender: nil)
     }
     
