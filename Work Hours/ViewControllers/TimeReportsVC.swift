@@ -34,6 +34,9 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 performSegue(withIdentifier: "timerSegue", sender: nil)
             }
         }
+        
+        // Ask for push permission
+        PushManager.shared.requestAuthorization()
     }
     
     override func viewDidAppear(_ animated: Bool) {
