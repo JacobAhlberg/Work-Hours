@@ -156,7 +156,7 @@ class timerVC: UIViewController {
     func activateBreak() {
         if breakIsActive {
             // This is executed if the break timer is being started
-            PushManager.shared.sendTimedPush(in: 3600, title: "1 hour break has passed", body: "Don't forget to finish it when your are off your break!")
+            PushManager.shared.sendTimedPush(in: 3600, title: "1 hour break has passed", body: "Don't forget to finish it when your are off your break!", badgeNr: 1)
             startTimerBtn.isEnabled = false
             startTimerBtn.alpha = 0.5
             activeLogView.backgroundColor = UIColor(red: 114/255, green: 175/255, blue: 207/255, alpha: 1)

@@ -23,12 +23,12 @@ class PushManager: NSObject {
         }
     }
     
-    func sendTimedPush(in time: TimeInterval, title: String, body: String) {
+    func sendTimedPush(in time: TimeInterval, title: String, body: String, badgeNr: Int) {
         let content = UNMutableNotificationContent()
         content.title = NSString.localizedUserNotificationString(forKey: title, arguments: nil)
         content.body = NSString.localizedUserNotificationString(forKey: body, arguments: nil)
         content.sound = .default()
-        //to add badge: content.badge should equal some Int
+        content.badge = badgeNr as NSNumber
         
         //trigger
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
