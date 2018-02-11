@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 @IBDesignable
-class outlinedButton: UIButton {
+class OutlinedButton: UIButton {
     
     @IBInspectable open var shadowing: Bool = false {
         didSet {
