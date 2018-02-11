@@ -663,7 +663,7 @@
         <!--TimerVC-->
         <scene sceneID="P9j-h8-IWS">
             <objects>
-                <viewController id="KOu-co-q87" customClass="TimerVC" sceneMemberID="viewController">
+                <viewController id="KOu-co-q87" customClass="TimerVC" customModule="Work_Hours" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qf9-rS-rP2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
