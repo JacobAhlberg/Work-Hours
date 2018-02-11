@@ -17,7 +17,7 @@
 		49B5B702202B5DAB00ED4897 /* NewTimeReportTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B5B701202B5DAB00ED4897 /* NewTimeReportTVC.swift */; };
 		49B5B704202B5F8A00ED4897 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B5B703202B5F8A00ED4897 /* MapVC.swift */; };
 		AC0C0C23202EF2EA009D2D43 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C22202EF2EA009D2D43 /* Buttons.swift */; };
-		AC0C0C25202F0DB1009D2D43 /* timerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C24202F0DB1009D2D43 /* timerVC.swift */; };
+		AC0C0C25202F0DB1009D2D43 /* TimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C24202F0DB1009D2D43 /* TimerVC.swift */; };
 		AC0C0C28202F3136009D2D43 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C27202F3136009D2D43 /* Functions.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +34,7 @@
 		49B5B701202B5DAB00ED4897 /* NewTimeReportTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTimeReportTVC.swift; sourceTree = "<group>"; };
 		49B5B703202B5F8A00ED4897 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		AC0C0C22202EF2EA009D2D43 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
-		AC0C0C24202F0DB1009D2D43 /* timerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timerVC.swift; sourceTree = "<group>"; };
+		AC0C0C24202F0DB1009D2D43 /* TimerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVC.swift; sourceTree = "<group>"; };
 		AC0C0C27202F3136009D2D43 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,7 +120,7 @@
 				49B5B701202B5DAB00ED4897 /* NewTimeReportTVC.swift */,
 				49B5B703202B5F8A00ED4897 /* MapVC.swift */,
 				49154457202DEE69001CC678 /* PopoverVC.swift */,
-				AC0C0C24202F0DB1009D2D43 /* timerVC.swift */,
+				AC0C0C24202F0DB1009D2D43 /* TimerVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -225,7 +225,7 @@
 				AC0C0C23202EF2EA009D2D43 /* Buttons.swift in Sources */,
 				49154455202DDAC2001CC678 /* AdditionalFileCell.swift in Sources */,
 				AC0C0C28202F3136009D2D43 /* Functions.swift in Sources */,
-				AC0C0C25202F0DB1009D2D43 /* timerVC.swift in Sources */,
+				AC0C0C25202F0DB1009D2D43 /* TimerVC.swift in Sources */,
 				494ED1B3202B4BEC004C7CDD /* TimeReportsVC.swift in Sources */,
 				49B5B704202B5F8A00ED4897 /* MapVC.swift in Sources */,
 				49B5B702202B5DAB00ED4897 /* NewTimeReportTVC.swift in Sources */,
