@@ -111,10 +111,12 @@ class timerVC: UIViewController {
             //Show alert after timer has stopped
             let alert = UIAlertController(title: NSLocalizedString("Timer has been stopped", comment: "Timer has been stopped"), message: NSLocalizedString("Working time: ", comment: "Working time: ") + "\(resultH)" + NSLocalizedString(" hours and ", comment: " hours and ") + "\(resultM)" + NSLocalizedString(" minutes.", comment: " minutes.") + "\n" + NSLocalizedString("Break time: ", comment: "Break time: ") + "\(breakH)" + NSLocalizedString(" hours and ", comment: " hours and ") + "\(breakM)" + NSLocalizedString(" minutes.", comment: " minutes."), preferredStyle: .actionSheet)
             //Alert text reads:
-            //Working time: XX hours and XX minutes. \n Break time: XX hours and XX minutes.
+            //Working time: XX hours and XX minutes. \nBreak time: XX hours and XX minutes.
             
             alert.addAction(UIAlertAction.init(title: NSLocalizedString("Discard", comment: "Discard"), style: .destructive, handler: { (action) in
                 self.resetData()
+                //Reset badge
+                UIApplication.shared.applicationIconBadgeNumber = 0
             }))
             alert.addAction(UIAlertAction.init(title: NSLocalizedString("Continue timer", comment: "Continue timer"), style: .default, handler: {
                 (action) in
@@ -123,6 +125,8 @@ class timerVC: UIViewController {
             
             alert.addAction(UIAlertAction.init(title: NSLocalizedString("Register", comment: "Register"), style: .default, handler: {(action) in
                 self.resetData() // Clear time User Defaults
+                //Reset badge
+                UIApplication.shared.applicationIconBadgeNumber = 0
                 self.performSegue(withIdentifier: "newTimeReportSegue", sender: self)
             }))
             present(alert, animated: true)
@@ -143,12 +147,16 @@ class timerVC: UIViewController {
             //Activate the break button
             breakBtn.isEnabled = true
             breakBtn.alpha = 1
+            
+            //Set badge to 1 to indicate activity
+            UIApplication.shared.applicationIconBadgeNumber = 1
         }
     }
     
     func activateBreak() {
         if breakIsActive {
             // This is executed if the break timer is being started
+            PushManager.shared.sendTimedPush(in: 3600, title: "1 hour break has passed", body: "Don't forget to finish it when your are off your break!", badgeNr: 1)
             startTimerBtn.isEnabled = false
             startTimerBtn.alpha = 0.5
             activeLogView.backgroundColor = UIColor(red: 114/255, green: 175/255, blue: 207/255, alpha: 1)
@@ -169,6 +177,7 @@ class timerVC: UIViewController {
             saveUserDefaults()
             startTimerBtn.setTitle(stopTimerString, for: .normal)
             continueTimer(isBreak: false)
+            PushManager.shared.stopUpcominPush()
         }
     }
     
