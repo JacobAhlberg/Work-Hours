@@ -20,6 +20,7 @@ class TimerVC: UIViewController {
     
     //MARK: - Class variables
     var isActive = false
+    var pushActive = false
     var startTime: Date = Date()
     var breakIsActive: Bool = false
     var startBreakTime: Date = Date()
@@ -41,6 +42,7 @@ class TimerVC: UIViewController {
     let userDefBreak = "totalBreakTime"
     let userDefBreakBool = "breakBool"
     let userDefStartBreak = "breakStart"
+    let userDefPushActive = "pushActive"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,13 +51,15 @@ class TimerVC: UIViewController {
         breakBtn.alpha = 0.5
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         
+        // Get user defaults
         totalBreakTime = UserDefaults.standard.double(forKey: userDefBreak)
         breakIsActive = UserDefaults.standard.bool(forKey: userDefBreakBool)
+        pushActive = UserDefaults.standard.bool(forKey: userDefPushActive)
+        
         if let defaultsStartBreakTime = UserDefaults.standard.object(forKey: userDefStartBreak) {
             startBreakTime = defaultsStartBreakTime as! Date
         }
         
-        // Get user defaults
         if let defaultsDate = UserDefaults.standard.object(forKey: userDefTimer) {
             startTime = defaultsDate as! Date
             if startTime < Date() {
@@ -140,7 +144,7 @@ class TimerVC: UIViewController {
             saveUserDefaults()
             
             activeLogView.isHidden = false
-            startTimeLbl.text = "Started: \(dateFormatter.string(from: startTime))"
+            startTimeLbl.text = startedString + "\(dateFormatter.string(from: startTime))"
             pulsate(view: activeLogView)
             startTimerBtn.setTitle(stopTimerString, for: .normal)
             
@@ -156,13 +160,18 @@ class TimerVC: UIViewController {
     func activateBreak() {
         if breakIsActive {
             // This is executed if the break timer is being started
-            PushManager.shared.sendTimedPush(in: 3600, title: "1 hour break has passed", body: "Don't forget to finish it when your are off your break!", badgeNr: 1)
+            if !pushActive {
+                PushManager.shared.sendTimedPush(in: 3600, title: "1 hour break has passed", body: "Don't forget to finish it when your are off your break!", badgeNr: 1)
+                pushActive = true
+                saveUserDefaults()
+            }
+            
             startTimerBtn.isEnabled = false
             startTimerBtn.alpha = 0.5
+            startTimerBtn.setTitle(stopTimerString, for: .normal)
             activeLogView.backgroundColor = UIColor(red: 114/255, green: 175/255, blue: 207/255, alpha: 1)
             breakBtn.setTitle(stopBreakString, for: .normal)
             registrationLbl.text = breakActiveString
-            startTimerBtn.setTitle(stopTimerString, for: .normal)
             startTimeLbl.text = startedString + dateFormatter.string(from: startBreakTime)
         } else {
             // This is exectued to stop the break timer
@@ -171,13 +180,15 @@ class TimerVC: UIViewController {
             breakBtn.setTitle(startBreakString, for: .normal)
             startTimerBtn.isEnabled = true
             startTimerBtn.alpha = 1
+            startTimerBtn.setTitle(stopTimerString, for: .normal)
             let finishedTime = Date()
             let resultBreak = finishedTime.timeIntervalSince(startBreakTime)
             totalBreakTime += resultBreak
-            saveUserDefaults()
-            startTimerBtn.setTitle(stopTimerString, for: .normal)
-            continueTimer(isBreak: false)
             PushManager.shared.stopUpcominPush()
+            pushActive = false
+            saveUserDefaults()
+            continueTimer(isBreak: false)
+            
         }
     }
     
@@ -212,6 +223,7 @@ class TimerVC: UIViewController {
         UserDefaults.standard.set(nil, forKey: self.userDefBreak)
         UserDefaults.standard.set(nil, forKey: self.userDefBreakBool)
         UserDefaults.standard.set(nil, forKey: self.userDefStartBreak)
+        UserDefaults.standard.set(nil, forKey: self.userDefPushActive)
         
         startBreakTime = Date()
         totalBreakTime = 0
@@ -222,6 +234,7 @@ class TimerVC: UIViewController {
         UserDefaults.standard.set(breakIsActive, forKey: userDefBreakBool)
         UserDefaults.standard.set(startTime, forKey: userDefTimer)
         UserDefaults.standard.set(startBreakTime, forKey: userDefStartBreak)
+        UserDefaults.standard.set(pushActive, forKey: userDefPushActive)
     }
     
 }
