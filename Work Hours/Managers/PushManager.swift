@@ -11,14 +11,16 @@ import UserNotifications
 
 class PushManager: NSObject {
     static var shared = PushManager()
+    
     let center = UNUserNotificationCenter.current()
     
-    // call this to request push authorization
+    // Call this to request push authorization
     func requestAuthorization() {
         center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
-            if error == nil {
-                //Authorization was granted
+            if let error = error {
+                // Authorization was granted
                 // make print here to debug
+                print(error.localizedDescription)
             }
         }
     }
@@ -30,7 +32,7 @@ class PushManager: NSObject {
         content.sound = .default()
         content.badge = badgeNr as NSNumber
         
-        //trigger
+        // Trigger
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
         let request = UNNotificationRequest(identifier: "Timed push", content: content, trigger: trigger)
         

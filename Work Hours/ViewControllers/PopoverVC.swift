@@ -14,16 +14,10 @@ class PopoverVC: UIViewController {
         super.viewDidLoad()
 
     }
-
     
     @IBAction func newTimeReportPressed(_ sender: Any) {
         NotificationCenter.default.post(name: NSNotification.Name("NewTimeReport"), object: nil)
         self.dismiss(animated: false, completion: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func timerBtnPressed(_ sender: Any) {

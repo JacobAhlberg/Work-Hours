@@ -70,18 +70,8 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
     }
     
-    @IBAction func unwindToTimeReports(segue: UIStoryboardSegue) {
-//        if segue.identifier == "createNewTimeReport" {
-//            performSegue(withIdentifier: "newTimeReportSegue", sender: nil)
-//        }
-    }
-    
     // MARK: - IBActions
-    
-    @IBAction func addBtnPressed(_ sender: Any) {
-//        performSegue(withIdentifier: "newTimeReportSegue", sender: nil)
-    }
-    
+
     @IBAction func activeRegViewPressed(_ sender: Any) {
         performSegue(withIdentifier: "timerSegue", sender: nil)
     }
