@@ -8,12 +8,12 @@
 
 import UIKit
 
-class timerVC: UIViewController {
+class TimerVC: UIViewController {
     
     //MARK: IB outlets
     @IBOutlet weak var activeLogView: UIView!
-    @IBOutlet weak var startTimerBtn: outlinedButton!
-    @IBOutlet weak var breakBtn: outlinedButton!
+    @IBOutlet weak var startTimerBtn: OutlinedButton!
+    @IBOutlet weak var breakBtn: OutlinedButton!
     
     @IBOutlet weak var startTimeLbl: UILabel!
     @IBOutlet weak var registrationLbl: UILabel!
