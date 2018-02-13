@@ -85,6 +85,10 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     // MARK: - IBActions
     
     @IBAction func cancelBtnPressed(_ sender: Any) {
+        // Warn with haptic feedback
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.warning)
+        
         let alertVC = UIAlertController(title: NSLocalizedString("Are you sure?", comment: "Are you sure?"), message: NSLocalizedString("Do you want to discard current report?", comment: "Do you want to discard current report?"), preferredStyle: .alert)
         let discardAction = UIAlertAction(title: NSLocalizedString("Discard", comment: "Discard"), style: .destructive) { (alert) in
             self.navigationController?.popViewController(animated: true)
