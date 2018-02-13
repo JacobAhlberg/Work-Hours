@@ -301,9 +301,6 @@
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
-                                                            <connections>
-                                                                <action selector="startTimeTxfPressed:" destination="bdp-CN-fau" eventType="valueChanged" id="9Db-cJ-rs8"/>
-                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
@@ -340,9 +337,6 @@
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
-                                                            <connections>
-                                                                <action selector="endTimeTxfPressed:" destination="bdp-CN-fau" eventType="valueChanged" id="pPC-FR-hqp"/>
-                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
@@ -618,7 +612,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Time Report" largeTitleDisplayMode="always" id="agg-fy-e93">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="UGe-w5-80t"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="YAU-fe-ZyU">
+                            <connections>
+                                <action selector="cancelBtnPressed:" destination="bdp-CN-fau" id="p1C-fH-GFD"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" style="done" id="UGe-w5-80t"/>
                     </navigationItem>
                     <connections>
                         <outlet property="abscentBtn" destination="t0U-z6-NvF" id="Wr2-aL-S9x"/>
