@@ -91,7 +91,6 @@ class TimerVC: UIViewController {
             newTimeReportVC.breakTime = secondsToHoursMinutesSeconds(seconds: Int(totalBreakTime))
             newTimeReportVC.startTime = startTime
             newTimeReportVC.endTime = finishedTime
-            self.resetData() // Clear time User Defaults
         }
     }
     
@@ -134,21 +133,34 @@ class TimerVC: UIViewController {
             //Alert text reads:
             //Working time: XX hours and XX minutes. \nBreak time: XX hours and XX minutes.
             
+            // Discard action
             alert.addAction(UIAlertAction.init(title: NSLocalizedString("Discard", comment: "Discard"), style: .destructive, handler: { (action) in
-                self.resetData()
-                //Reset badge
-                UIApplication.shared.applicationIconBadgeNumber = 0
+                
+                let alertVC = UIAlertController(title: NSLocalizedString("Are you sure?", comment: "Are you sure?"), message: NSLocalizedString("Do you want to discard current timer?", comment: "Do you want to discard current timer?"), preferredStyle: .alert)
+                let discardAction = UIAlertAction(title: NSLocalizedString("Discard", comment: "Discard"), style: .destructive) { (alert) in
+                    self.resetData()
+                    //Reset badge
+                    UIApplication.shared.applicationIconBadgeNumber = 0
+                }
+                let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .cancel, handler: { (alert) in
+                    self.continueTimer(isBreak: false)
+                })
+                alertVC.addAction(discardAction)
+                alertVC.addAction(cancelAction)
+                self.present(alertVC, animated: true, completion: nil)
             }))
             
+            // Continue timer
+            alert.addAction(UIAlertAction.init(title: NSLocalizedString("Continue timer", comment: "Continue timer"), style: .default, handler: {
+                (action) in
+                self.continueTimer(isBreak: false)
+            }))
+            
+            // Register timer
             alert.addAction(UIAlertAction.init(title: NSLocalizedString("Register", comment: "Register"), style: .default, handler: {(action) in
                 //Reset badge
                 UIApplication.shared.applicationIconBadgeNumber = 0
                 self.performSegue(withIdentifier: "newTimeReportSegue", sender: self)
-            }))
-            
-            alert.addAction(UIAlertAction.init(title: NSLocalizedString("Continue timer", comment: "Continue timer"), style: .cancel, handler: {
-                (action) in
-                self.continueTimer(isBreak: false)
             }))
             present(alert, animated: true)
             
@@ -236,14 +248,9 @@ class TimerVC: UIViewController {
     
     //MARK: - User Defaults
     func resetData() {
-        UserDefaults.standard.set(nil, forKey: self.userDefTimer)
-        UserDefaults.standard.set(nil, forKey: self.userDefBreak)
-        UserDefaults.standard.set(nil, forKey: self.userDefBreakBool)
-        UserDefaults.standard.set(nil, forKey: self.userDefStartBreak)
-        UserDefaults.standard.set(nil, forKey: self.userDefPushActive)
-        
         startBreakTime = Date()
         totalBreakTime = 0
+        clearUserDefaults()
     }
     
     func saveUserDefaults() {
