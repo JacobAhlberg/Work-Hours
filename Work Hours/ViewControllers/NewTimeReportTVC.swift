@@ -87,7 +87,6 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     @IBAction func cancelBtnPressed(_ sender: Any) {
         let alertVC = UIAlertController(title: NSLocalizedString("Are you sure?", comment: "Are you sure?"), message: NSLocalizedString("Do you want to discard current report?", comment: "Do you want to discard current report?"), preferredStyle: .alert)
         let discardAction = UIAlertAction(title: NSLocalizedString("Discard", comment: "Discard"), style: .destructive) { (alert) in
-            clearUserDefaults()
             self.navigationController?.popViewController(animated: true)
         }
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel newTimeReport"), style: .cancel, handler: nil)
