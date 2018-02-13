@@ -150,18 +150,19 @@ class TimerVC: UIViewController {
                 self.present(alertVC, animated: true, completion: nil)
             }))
             
-            // Continue timer
-            alert.addAction(UIAlertAction.init(title: NSLocalizedString("Continue timer", comment: "Continue timer"), style: .default, handler: {
-                (action) in
-                self.continueTimer(isBreak: false)
-            }))
-            
             // Register timer
             alert.addAction(UIAlertAction.init(title: NSLocalizedString("Register", comment: "Register"), style: .default, handler: {(action) in
                 //Reset badge
                 UIApplication.shared.applicationIconBadgeNumber = 0
                 self.performSegue(withIdentifier: "newTimeReportSegue", sender: self)
             }))
+            
+            // Continue timer
+            alert.addAction(UIAlertAction.init(title: NSLocalizedString("Continue timer", comment: "Continue timer"), style: .cancel, handler: {
+                (action) in
+                self.continueTimer(isBreak: false)
+            }))
+            
             present(alert, animated: true)
             
         } else {
