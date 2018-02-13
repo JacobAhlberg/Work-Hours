@@ -27,6 +27,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     @IBOutlet weak var notesTxv: UITextView!
     @IBOutlet weak var additionalFileCollectionView: UICollectionView!
     
+    
     // MARK: - Class variables
     
     var locationManager = CLLocationManager()
@@ -83,12 +84,16 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     
     // MARK: - IBActions
     
-    @IBAction func startTimeTxfPressed(_ sender: UITextField) {
-        
-    }
-    
-    @IBAction func endTimeTxfPressed(_ sender: UITextField) {
-        
+    @IBAction func cancelBtnPressed(_ sender: Any) {
+        let alertVC = UIAlertController(title: NSLocalizedString("Are you sure?", comment: "Are you sure?"), message: NSLocalizedString("Do you want to discard current report?", comment: "Do you want to discard current report?"), preferredStyle: .alert)
+        let discardAction = UIAlertAction(title: NSLocalizedString("Discard", comment: "Discard"), style: .destructive) { (alert) in
+            clearUserDefaults()
+            self.navigationController?.popViewController(animated: true)
+        }
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel newTimeReport"), style: .cancel, handler: nil)
+        alertVC.addAction(discardAction)
+        alertVC.addAction(cancelAction)
+        present(alertVC, animated: true, completion: nil)
     }
     
     @IBAction func tappedMap(_ sender: Any) {

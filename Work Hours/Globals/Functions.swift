@@ -20,3 +20,12 @@ func pulsate(view : UIView) {
     pulseAnimation.repeatCount = .greatestFiniteMagnitude
     view.layer.add(pulseAnimation, forKey: "animateOpacity")
 }
+
+// User default
+func clearUserDefaults() {
+    UserDefaults.standard.set(nil, forKey: "timerStartValue")
+    UserDefaults.standard.set(nil, forKey: "totalBreakTime")
+    UserDefaults.standard.set(nil, forKey: "breakBool")
+    UserDefaults.standard.set(nil, forKey: "breakStart")
+    UserDefaults.standard.set(nil, forKey: "pushActive")
+}
