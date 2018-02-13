@@ -136,6 +136,10 @@ class TimerVC: UIViewController {
             // Discard action
             alert.addAction(UIAlertAction.init(title: NSLocalizedString("Discard", comment: "Discard"), style: .destructive, handler: { (action) in
                 
+                // Warn with haptic feedback
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.warning)
+                
                 let alertVC = UIAlertController(title: NSLocalizedString("Are you sure?", comment: "Are you sure?"), message: NSLocalizedString("Do you want to discard current timer?", comment: "Do you want to discard current timer?"), preferredStyle: .alert)
                 let discardAction = UIAlertAction(title: NSLocalizedString("Discard", comment: "Discard"), style: .destructive) { (alert) in
                     self.resetData()
@@ -162,6 +166,9 @@ class TimerVC: UIViewController {
                 (action) in
                 self.continueTimer(isBreak: false)
             }))
+            
+            let generator = UIImpactFeedbackGenerator(style: .heavy)
+            generator.impactOccurred()
             
             present(alert, animated: true)
             
