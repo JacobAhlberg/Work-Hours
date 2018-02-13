@@ -58,7 +58,7 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registration is active - Click to view" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gu2-Sx-pHY">
-                                        <rect key="frame" x="55.333333333333343" y="5" width="266" height="21"/>
+                                        <rect key="frame" x="54.666666666666657" y="5" width="266" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -759,10 +759,10 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="70"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="EfB-5o-7EF">
-                                        <rect key="frame" x="87.333333333333329" y="10.333333333333325" width="200.33333333333337" height="49.666666666666657"/>
+                                        <rect key="frame" x="87.666666666666671" y="10.333333333333325" width="200.33333333333331" height="49.666666666666657"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registration is active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwg-cU-eC9">
-                                                <rect key="frame" x="22.333333333333343" y="0.0" width="155.66666666666666" height="20.333333333333332"/>
+                                                <rect key="frame" x="22.333333333333329" y="0.0" width="155.66666666666669" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -801,7 +801,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="NTo-2d-Kfl" secondAttribute="bottom" constant="8" id="3z1-h7-cbL"/>
+                            <constraint firstAttribute="bottom" secondItem="NTo-2d-Kfl" secondAttribute="bottom" constant="15" id="3z1-h7-cbL"/>
                             <constraint firstItem="UN4-wC-EEK" firstAttribute="trailing" secondItem="qf9-rS-rP2" secondAttribute="trailing" id="6iD-Op-AUn">
                                 <variation key="heightClass=compact" constant="0.0"/>
                             </constraint>
