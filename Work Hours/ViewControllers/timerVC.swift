@@ -10,7 +10,7 @@ import UIKit
 
 class TimerVC: UIViewController {
     
-    //MARK: IB outlets
+    // MARK: IB outlets
     @IBOutlet weak var activeLogView: UIView!
     @IBOutlet weak var startTimerBtn: OutlinedButton!
     @IBOutlet weak var breakBtn: OutlinedButton!
@@ -18,17 +18,18 @@ class TimerVC: UIViewController {
     @IBOutlet weak var startTimeLbl: UILabel!
     @IBOutlet weak var registrationLbl: UILabel!
     
-    //MARK: - Class variables
+    // MARK: - Class variables
     var isActive = false
     var pushActive = false
-    var startTime: Date = Date()
+    var startTime = Date()
+    var finishedTime = Date()
     var breakIsActive: Bool = false
     var startBreakTime: Date = Date()
     var totalBreakTime : Double = 0
     
     let dateFormatter = DateFormatter()
     
-    //MARK: Strings that are being used multiple times
+    // MARK: Strings that are being used multiple times
     let stopTimerString = NSLocalizedString("STOP TIMER", comment: "STOP TIMER")
     let startTimerString = NSLocalizedString("START TIMER", comment: "START TIMER")
     let stopBreakString = NSLocalizedString("STOP BREAK", comment: "STOP BREAK")
@@ -37,12 +38,14 @@ class TimerVC: UIViewController {
     let breakActiveString = NSLocalizedString("Break is active", comment: "Break is active")
     let startedString = NSLocalizedString("Started : ", comment: "Started : ")
     
-    //MARK: User Defaults strings
+    // MARK: User Defaults strings
     let userDefTimer = "timerStartValue"
     let userDefBreak = "totalBreakTime"
     let userDefBreakBool = "breakBool"
     let userDefStartBreak = "breakStart"
     let userDefPushActive = "pushActive"
+    
+    // MARK: Application runtime
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +72,8 @@ class TimerVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = false
+        
         if isActive {
             if breakIsActive {
                 continueTimer(isBreak: true)
@@ -78,7 +83,19 @@ class TimerVC: UIViewController {
         }
     }
     
-    //MARK: - IB Actions
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "newTimeReportSegue" {
+            guard let newTimeReportVC = segue.destination as? NewTimeReportTVC else { return }
+            newTimeReportVC.breakTime = secondsToHoursMinutesSeconds(seconds: Int(totalBreakTime))
+            newTimeReportVC.startTime = startTime
+            newTimeReportVC.endTime = finishedTime
+            self.resetData() // Clear time User Defaults
+        }
+    }
+    
+    // MARK: - IB Actions
     @IBAction func startTimerPressed(_ sender: Any) {
         activateTimer()
     }
@@ -92,7 +109,7 @@ class TimerVC: UIViewController {
         activateBreak()
     }
     
-    //MARK: - Functions
+    // MARK: - Functions
     func activateTimer() {
         if isActive {
             // If timer is active - stop the timer
@@ -105,7 +122,7 @@ class TimerVC: UIViewController {
             breakBtn.alpha = 0.5
             
             //Calculate total time since timer started
-            let finishedTime = Date()
+            finishedTime = Date()
             let resultTime = finishedTime.timeIntervalSince(startTime)
             let (resultH,resultM) = secondsToHoursMinutesSeconds(seconds: Int(resultTime))
             
@@ -128,7 +145,6 @@ class TimerVC: UIViewController {
             }))
             
             alert.addAction(UIAlertAction.init(title: NSLocalizedString("Register", comment: "Register"), style: .default, handler: {(action) in
-                self.resetData() // Clear time User Defaults
                 //Reset badge
                 UIApplication.shared.applicationIconBadgeNumber = 0
                 self.performSegue(withIdentifier: "newTimeReportSegue", sender: self)

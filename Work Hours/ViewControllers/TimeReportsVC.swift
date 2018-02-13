@@ -39,6 +39,15 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         PushManager.shared.requestAuthorization()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if !timeReportsArray.isEmpty {
+            noTimeReportsLabel.isHidden = true
+            timeReportsTableView.isHidden = false
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         if let defaultsDate = UserDefaults.standard.object(forKey: "timerStartValue") {
             let startTime = defaultsDate as! Date
@@ -48,15 +57,6 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             }
         } else {
             activeRegView.isHidden = true
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if !timeReportsArray.isEmpty {
-            noTimeReportsLabel.isHidden = true
-            timeReportsTableView.isHidden = false
         }
     }
     
