@@ -18,9 +18,10 @@ class PushManager: NSObject {
     func requestAuthorization() {
         center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             if let error = error {
+                print(error.localizedDescription)
+            } else {
                 // Authorization was granted
                 // make print here to debug
-                print(error.localizedDescription)
             }
         }
     }
@@ -37,8 +38,10 @@ class PushManager: NSObject {
         let request = UNNotificationRequest(identifier: "Timed push", content: content, trigger: trigger)
         
         center.add(request) { (error) in
-            if error == nil {
-                // Managed to schedule successfully
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                // Authorization was granted
                 // make print here to debug
             }
         }
