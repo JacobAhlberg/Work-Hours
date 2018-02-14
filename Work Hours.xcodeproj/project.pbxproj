@@ -21,6 +21,7 @@
 		AC0C0C25202F0DB1009D2D43 /* TimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C24202F0DB1009D2D43 /* TimerVC.swift */; };
 		AC0C0C28202F3136009D2D43 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C27202F3136009D2D43 /* Functions.swift */; };
 		AC8493C62031C52700DEF489 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC8493C52031C52700DEF489 /* GoogleService-Info.plist */; };
+		AC8493C820349F2400DEF489 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8493C720349F2400DEF489 /* Extensions.swift */; };
 		AC85E22520305C90009CE72A /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC85E22420305C90009CE72A /* PushManager.swift */; };
 		AFDF28CDFEEF0A453C5288F1 /* Pods_Work_Hours.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C51D2C207BB45FB398CCB74 /* Pods_Work_Hours.framework */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		AC0C0C24202F0DB1009D2D43 /* TimerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVC.swift; sourceTree = "<group>"; };
 		AC0C0C27202F3136009D2D43 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		AC8493C52031C52700DEF489 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AC8493C720349F2400DEF489 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AC85E22420305C90009CE72A /* PushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				AC0C0C27202F3136009D2D43 /* Functions.swift */,
+				AC8493C720349F2400DEF489 /* Extensions.swift */,
 			);
 			path = Globals;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				AC0C0C25202F0DB1009D2D43 /* TimerVC.swift in Sources */,
 				494ED1B3202B4BEC004C7CDD /* TimeReportsVC.swift in Sources */,
 				AC85E22520305C90009CE72A /* PushManager.swift in Sources */,
+				AC8493C820349F2400DEF489 /* Extensions.swift in Sources */,
 				49B5B704202B5F8A00ED4897 /* MapVC.swift in Sources */,
 				49B5B702202B5DAB00ED4897 /* NewTimeReportTVC.swift in Sources */,
 				49154458202DEE69001CC678 /* PopoverVC.swift in Sources */,
