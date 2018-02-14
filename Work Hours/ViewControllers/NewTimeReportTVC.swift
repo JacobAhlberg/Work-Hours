@@ -81,6 +81,15 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
             breakHourTxf.text = String(brake.0)
             breakMinutesTxf.text = String(brake.1)
         }
+        if let workLocation = workLocation {
+            mapView.removeAnnotations(mapView.annotations)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = workLocation.coordinate
+            mapView.addAnnotation(annotation)
+            let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 200, 200)
+            mapView.setRegion(region, animated: true)
+            locationManager.stopUpdatingLocation()
+        }
     }
     
     // MARK: - Navigation
@@ -144,6 +153,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
+            locationManager.pausesLocationUpdatesAutomatically = true
         }
     }
     
@@ -207,19 +217,6 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
             mapView.addAnnotation(annotation)
             mapView.setRegion(region, animated: true)
             newTimeReport = false
-        } else if let workLocation = workLocation {
-            mapView.removeAnnotations(mapView.annotations)
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = workLocation.coordinate
-            mapView.addAnnotation(annotation)
-            let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 200, 200)
-            mapView.setRegion(region, animated: true)
-            
-            _ = Timer(timeInterval: 3, repeats: false, block: { (timer) in
-                manager.stopUpdatingLocation()
-                timer.invalidate()
-            })
-            
         }
     }
     
