@@ -947,8 +947,10 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6Iv-ur-9oT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="delegate" destination="06J-gx-9yt" id="oW1-Er-oyv"/>
+                                    <outletCollection property="gestureRecognizers" destination="oZg-Hr-ZM8" appends="YES" id="Huh-4m-7WH"/>
                                 </connections>
                             </mapView>
                         </subviews>
@@ -975,6 +977,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uhs-0e-oaw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="1e7-yx-Ged" userLabel="Exit" sceneMemberID="exit"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="oZg-Hr-ZM8">
+                    <connections>
+                        <action selector="dropLocationWithLongPress:" destination="06J-gx-9yt" id="rWn-e8-i7a"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2157.5999999999999" y="-229.06403940886702"/>
         </scene>
