@@ -64,23 +64,8 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         super.viewWillAppear(animated)
         additionalFileCollectionView.reloadData()
         currentDate()
+        setDataFromTimerVC()
         
-        if let start = startTime {
-            dateTxf.text = dateFormatter.string(from: start)
-            dateFormatter.dateFormat = "HH:mm"
-            startTimeTxf.text = dateFormatter.string(from: start)
-        } else {
-            dateFormatter.dateFormat = "HH:mm"
-        }
-        
-        if let end = endTime {
-            endTimeTxf.text = dateFormatter.string(from: end)
-        }
-        
-        if let brake = breakTime {
-            breakHourTxf.text = String(brake.0)
-            breakMinutesTxf.text = String(brake.1)
-        }
         if let workLocation = workLocation {
             mapView.removeAnnotations(mapView.annotations)
             let annotation = MKPointAnnotation()
@@ -117,7 +102,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         if sender.isOn { userIsAbscent(userIsAbscent: true) }
         else { userIsAbscent(userIsAbscent: false) }
     }
-    
+
     
     @IBAction func tappedMap(_ sender: Any) {
         performSegue(withIdentifier: "mapSegue", sender: nil)
@@ -148,15 +133,48 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     
     func userIsAbscent(userIsAbscent abscent: Bool) {
         if abscent {
-            
+            startTimeTxf.isEnabled = false
+            endTimeTxf.isEnabled = false
+            breakHourTxf.isEnabled = false
+            breakMinutesTxf.isEnabled = false
+            startTimeTxf.alpha = 0.5
+            endTimeTxf.alpha = 0.5
+            breakHourTxf.alpha = 0.5
+            breakMinutesTxf.alpha = 0.5
         } else {
-            
+            startTimeTxf.isEnabled = true
+            endTimeTxf.isEnabled = true
+            breakHourTxf.isEnabled = true
+            breakMinutesTxf.isEnabled = true
+            startTimeTxf.alpha = 1
+            endTimeTxf.alpha = 1
+            breakHourTxf.alpha = 1
+            breakMinutesTxf.alpha = 1
         }
     }
     
     func currentDate() {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateTxf.text = dateFormatter.string(from: Date())
+    }
+    
+    func setDataFromTimerVC() {
+        if let start = startTime {
+            dateTxf.text = dateFormatter.string(from: start)
+            dateFormatter.dateFormat = "HH:mm"
+            startTimeTxf.text = dateFormatter.string(from: start)
+        } else {
+            dateFormatter.dateFormat = "HH:mm"
+        }
+        
+        if let end = endTime {
+            endTimeTxf.text = dateFormatter.string(from: end)
+        }
+        
+        if let brake = breakTime {
+            breakHourTxf.text = String(brake.0)
+            breakMinutesTxf.text = String(brake.1)
+        }
     }
     
     func findUserLocation() {
@@ -230,13 +248,6 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
             mapView.addAnnotation(annotation)
             mapView.setRegion(region, animated: true)
             newTimeReport = false
-        } else if let workLocation = workLocation {
-            mapView.removeAnnotations(mapView.annotations)
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = workLocation.coordinate
-            mapView.addAnnotation(annotation)
-            let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 200, 200)
-            mapView.setRegion(region, animated: true)
         }
     }
     
