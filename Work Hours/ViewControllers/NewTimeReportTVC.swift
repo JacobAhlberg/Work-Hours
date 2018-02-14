@@ -34,7 +34,6 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     var workLocation: CLLocation?
     
     var newTimeReport = true
-    var stopFindingLocation = false
     var additionalFilesArray: [UIImage] = []
     
     let dateFormatter = DateFormatter()
@@ -65,7 +64,6 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         super.viewWillAppear(animated)
         additionalFileCollectionView.reloadData()
         currentDate()
-        
         
         if let start = startTime {
             dateTxf.text = dateFormatter.string(from: start)
@@ -100,13 +98,14 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         let discardAction = UIAlertAction(title: NSLocalizedString("Discard", comment: "Discard"), style: .destructive) { (alert) in
             self.navigationController?.popViewController(animated: true)
         }
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel newTimeReport"), style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .cancel, handler: nil)
         alertVC.addAction(discardAction)
         alertVC.addAction(cancelAction)
         present(alertVC, animated: true, completion: nil)
     }
     
     @IBAction func tappedMap(_ sender: Any) {
+        locationManager.startUpdatingLocation()
         performSegue(withIdentifier: "mapSegue", sender: nil)
     }
     
@@ -209,15 +208,18 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
             mapView.setRegion(region, animated: true)
             newTimeReport = false
         } else if let workLocation = workLocation {
-            if !stopFindingLocation {
-                mapView.removeAnnotations(mapView.annotations)
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = workLocation.coordinate
-                mapView.addAnnotation(annotation)
-                let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 200, 200)
-                mapView.setRegion(region, animated: true)
-                stopFindingLocation = true
-            }
+            mapView.removeAnnotations(mapView.annotations)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = workLocation.coordinate
+            mapView.addAnnotation(annotation)
+            let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 200, 200)
+            mapView.setRegion(region, animated: true)
+            
+            _ = Timer(timeInterval: 3, repeats: false, block: { (timer) in
+                manager.stopUpdatingLocation()
+                timer.invalidate()
+            })
+            
         }
     }
     

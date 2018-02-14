@@ -66,7 +66,6 @@ class MapVC: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, H
             annotation.coordinate = coordinate
             mapView.removeAnnotations(mapView.annotations)
             mapView.addAnnotation(annotation)
-            
         }
     }
     
