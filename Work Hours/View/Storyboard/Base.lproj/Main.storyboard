@@ -160,19 +160,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New report" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrc-yy-xAN">
-                                <rect key="frame" x="8" y="66.666666666666686" width="88" height="123.33333333333331"/>
+                                <rect key="frame" x="8" y="66.666666666666671" width="88" height="23.333333333333329"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vx-nY-sC6">
-                                <rect key="frame" x="11.666666666666657" y="66.666666666666686" width="80.333333333333343" height="123.33333333333331"/>
+                                <rect key="frame" x="111.66666666666669" y="66.666666666666671" width="80.333333333333314" height="23.333333333333329"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timer" translatesAutoresizingMaskIntoConstraints="NO" id="lPd-Lj-WAj">
-                                <rect key="frame" x="22" y="13" width="60" height="45"/>
+                                <rect key="frame" x="122" y="13" width="60" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="qda-ms-k2T"/>
                                 </constraints>
@@ -184,16 +184,16 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="07M-BV-dHe">
-                                <rect key="frame" x="0.0" y="0.0" width="100" height="200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21o-fn-xWR">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <connections>
                                             <action selector="newTimeReportPressed:" destination="PYp-4n-3Ou" eventType="touchUpInside" id="G23-tK-NIH"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4W2-Bw-55N">
-                                        <rect key="frame" x="50" y="0.0" width="50" height="200"/>
+                                        <rect key="frame" x="100" y="0.0" width="100" height="100"/>
                                         <connections>
                                             <action selector="timerBtnPressed:" destination="PYp-4n-3Ou" eventType="touchUpInside" id="ouG-kj-dU4"/>
                                         </connections>
@@ -510,7 +510,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WD0-b4-BH2">
-                                                    <rect key="frame" x="16" y="11" width="343" height="177"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="198.66666666666666"/>
                                                     <gestureRecognizers/>
                                                     <connections>
                                                         <outlet property="delegate" destination="bdp-CN-fau" id="sy3-ux-glK"/>
@@ -518,19 +518,19 @@
                                                     </connections>
                                                 </mapView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customer location, tap to change" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9m4-Rz-Uwc">
-                                                    <rect key="frame" x="24" y="18.666666666666668" width="259" height="24.000000000000004"/>
+                                                    <rect key="frame" x="16" y="11" width="259" height="24"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="WD0-b4-BH2" firstAttribute="top" secondItem="xAy-zw-Xup" secondAttribute="topMargin" id="8XD-Oe-cu1"/>
-                                                <constraint firstItem="WD0-b4-BH2" firstAttribute="leading" secondItem="xAy-zw-Xup" secondAttribute="leadingMargin" id="FrZ-jP-hKq"/>
-                                                <constraint firstItem="9m4-Rz-Uwc" firstAttribute="top" secondItem="xAy-zw-Xup" secondAttribute="topMargin" constant="8" id="LqV-4E-NLr"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="WD0-b4-BH2" secondAttribute="trailing" id="Vw2-ws-YFk"/>
-                                                <constraint firstItem="9m4-Rz-Uwc" firstAttribute="leading" secondItem="xAy-zw-Xup" secondAttribute="leadingMargin" constant="8" id="kuy-8V-61O"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="WD0-b4-BH2" secondAttribute="bottom" id="unh-zt-cBs"/>
+                                                <constraint firstItem="WD0-b4-BH2" firstAttribute="top" secondItem="xAy-zw-Xup" secondAttribute="top" id="8XD-Oe-cu1"/>
+                                                <constraint firstItem="WD0-b4-BH2" firstAttribute="leading" secondItem="xAy-zw-Xup" secondAttribute="leading" id="FrZ-jP-hKq"/>
+                                                <constraint firstItem="9m4-Rz-Uwc" firstAttribute="top" secondItem="xAy-zw-Xup" secondAttribute="topMargin" id="LqV-4E-NLr"/>
+                                                <constraint firstAttribute="trailing" secondItem="WD0-b4-BH2" secondAttribute="trailing" id="Vw2-ws-YFk"/>
+                                                <constraint firstItem="9m4-Rz-Uwc" firstAttribute="leading" secondItem="xAy-zw-Xup" secondAttribute="leadingMargin" id="kuy-8V-61O"/>
+                                                <constraint firstAttribute="bottom" secondItem="WD0-b4-BH2" secondAttribute="bottom" id="unh-zt-cBs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
