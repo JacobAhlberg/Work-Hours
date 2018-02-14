@@ -9,29 +9,98 @@
 import UIKit
 import MapKit
 
-class MapVC: UIViewController {
+protocol HandleMapSearch {
+    func dropPinZoomIn(placemark: MKPlacemark)
+}
+
+class MapVC: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, HandleMapSearch {
     
     // MARK: - IBOutles
+    @IBOutlet weak var mapView: MKMapView!
     
+    var resultSearchController: UISearchController?
     
-    // MARK: - Variables
+    // MARK: - Class variables
+    let locationManager = CLLocationManager()
+    var selectedPin: MKPlacemark?
+    
     
     // MARK: - Application runtime
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLocationManager()
+        setupSearchController()
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - Functions
+    
+    func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
     }
-    */
-
+    
+    func setupSearchController() {
+        guard let locationSearchTVC = storyboard?.instantiateViewController(withIdentifier: "LocationSearchTVC") as? LocationSearchTVC else { return }
+        resultSearchController = UISearchController(searchResultsController: locationSearchTVC)
+        resultSearchController?.searchResultsUpdater = locationSearchTVC
+        locationSearchTVC.mapView = mapView
+        locationSearchTVC.delegate = self
+        
+        let searchBar = resultSearchController?.searchBar
+        searchBar?.sizeToFit()
+        searchBar?.placeholder = NSLocalizedString("Search for places", comment: "Search for places")
+        navigationItem.titleView = resultSearchController?.searchBar
+        
+        // Don't hide the search bar when searching
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        // Dims in the background while searching
+        resultSearchController?.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
+        
+        
+    }
+    
+    // MARK: - CLLocationManager delegate
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.requestLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            let region = MKCoordinateRegion(center: location.coordinate, span: span)
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
+    }
+    
+    // MARK: - Handle Map Search delegate
+    func dropPinZoomIn(placemark: MKPlacemark) {
+        selectedPin = placemark
+        mapView.removeAnnotations(mapView.annotations)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        
+        if let city = placemark.locality, let state = placemark.administrativeArea {
+            annotation.subtitle = "\(city) \(state)"
+        }
+        mapView.addAnnotation(annotation)
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegionMake(placemark.coordinate, span)
+        mapView.setRegion(region, animated: true)
+    }
+    
+    
 }

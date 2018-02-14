@@ -8,9 +8,8 @@
 
 import UIKit
 import MapKit
-import CoreLocation
 
-class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate {
     
     
     // MARK: - IBOutles
@@ -182,6 +181,15 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         view.endEditing(true)
     }
     
+    
+    // MARK: - TextField delegates
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Dismissing keyboard
+        textField.resignFirstResponder()
+        return true
+    }
+    
     // MARK: - CoreLocation delegates
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -195,20 +203,6 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
             newTimeReport = false
         }
         
-    }
-    
-    // MARK: - MapView delegates
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "currentLocation") as? MKPinAnnotationView
-        
-        if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "currentLocation")
-        }
-        
-        annotationView?.pinTintColor = #colorLiteral(red: 0.3636682928, green: 0.6938934922, blue: 0.8256246448, alpha: 1)
-        annotationView?.isEnabled = false
-        return annotationView
     }
     
     // MARK: - ImagePickerController delegate
