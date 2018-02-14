@@ -104,8 +104,13 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         present(alertVC, animated: true, completion: nil)
     }
     
+    @IBAction func abscentBtnPressed(_ sender: UISwitch) {
+        if sender.isOn { userIsAbscent(userIsAbscent: true) }
+        else { userIsAbscent(userIsAbscent: false) }
+    }
+    
+    
     @IBAction func tappedMap(_ sender: Any) {
-        locationManager.startUpdatingLocation()
         performSegue(withIdentifier: "mapSegue", sender: nil)
     }
     
@@ -131,6 +136,14 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     
     
     // MARK: - Functions
+    
+    func userIsAbscent(userIsAbscent abscent: Bool) {
+        if abscent {
+            
+        } else {
+            
+        }
+    }
     
     func currentDate() {
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -214,14 +227,9 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
             mapView.addAnnotation(annotation)
             let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 200, 200)
             mapView.setRegion(region, animated: true)
-            
-            _ = Timer(timeInterval: 3, repeats: false, block: { (timer) in
-                manager.stopUpdatingLocation()
-                timer.invalidate()
-            })
-            
         }
     }
+    
     
     // MARK: - ImagePickerController delegate
     
