@@ -51,9 +51,7 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             timeReportsTableView.isHidden = false
             cityImg.isHidden = true
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
+        
         if let defaultsDate = UserDefaults.standard.object(forKey: "timerStartValue") {
             let startTime = defaultsDate as! Date
             if startTime < Date() {
