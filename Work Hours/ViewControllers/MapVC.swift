@@ -25,12 +25,15 @@ class MapVC: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, H
     let userLocation: CLLocation? = nil
     var selectedPin: MKPlacemark?
     
+    var findFirstLocation = true
+    
     
     // MARK: - Application runtime
 
     override func viewDidLoad() {
         super.viewDidLoad()
         findUserLocation()
+        setupSearchController()
         
     }
     
@@ -96,13 +99,16 @@ class MapVC: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, H
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = location.coordinate
-            mapView.addAnnotation(annotation)
-            let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-            let region = MKCoordinateRegion(center: location.coordinate, span: span)
-            mapView.setRegion(region, animated: true)
+        if findFirstLocation {
+            if let location = locations.first {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = location.coordinate
+                mapView.addAnnotation(annotation)
+                let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                let region = MKCoordinateRegion(center: location.coordinate, span: span)
+                mapView.setRegion(region, animated: true)
+            }
+            findFirstLocation = false
         }
     }
     
