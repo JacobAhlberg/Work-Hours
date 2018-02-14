@@ -22,6 +22,8 @@
 		AC0C0C28202F3136009D2D43 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C27202F3136009D2D43 /* Functions.swift */; };
 		AC8493C62031C52700DEF489 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC8493C52031C52700DEF489 /* GoogleService-Info.plist */; };
 		AC8493C820349F2400DEF489 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8493C720349F2400DEF489 /* Extensions.swift */; };
+		AC8493CD2034BB3000DEF489 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AC8493CF2034BB3000DEF489 /* Localizable.strings */; };
+		AC8493D22034BB3A00DEF489 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AC8493D42034BB3A00DEF489 /* InfoPlist.strings */; };
 		AC85E22520305C90009CE72A /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC85E22420305C90009CE72A /* PushManager.swift */; };
 		AFDF28CDFEEF0A453C5288F1 /* Pods_Work_Hours.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C51D2C207BB45FB398CCB74 /* Pods_Work_Hours.framework */; };
 /* End PBXBuildFile section */
@@ -47,6 +49,10 @@
 		AC0C0C27202F3136009D2D43 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		AC8493C52031C52700DEF489 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AC8493C720349F2400DEF489 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		AC8493C92034B96300DEF489 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
+		AC8493CA2034B96400DEF489 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		AC8493CE2034BB3000DEF489 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AC8493D32034BB3A00DEF489 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AC85E22420305C90009CE72A /* PushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +128,8 @@
 		49B5B6FC202B52E800ED4897 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AC8493D42034BB3A00DEF489 /* InfoPlist.strings */,
+				AC8493CF2034BB3000DEF489 /* Localizable.strings */,
 				494ED1BC202B4BEC004C7CDD /* Info.plist */,
 				AC8493C52031C52700DEF489 /* GoogleService-Info.plist */,
 				494ED1B0202B4BEC004C7CDD /* AppDelegate.swift */,
@@ -256,6 +264,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC8493CD2034BB3000DEF489 /* Localizable.strings in Resources */,
+				AC8493D22034BB3A00DEF489 /* InfoPlist.strings in Resources */,
 				AC8493C62031C52700DEF489 /* GoogleService-Info.plist in Resources */,
 				494ED1BB202B4BEC004C7CDD /* LaunchScreen.storyboard in Resources */,
 				494ED1B8202B4BEC004C7CDD /* Assets.xcassets in Resources */,
@@ -364,6 +374,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				494ED1B5202B4BEC004C7CDD /* Base */,
+				AC8493C92034B96300DEF489 /* sv */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -372,8 +383,25 @@
 			isa = PBXVariantGroup;
 			children = (
 				494ED1BA202B4BEC004C7CDD /* Base */,
+				AC8493CA2034B96400DEF489 /* sv */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		AC8493CF2034BB3000DEF489 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC8493CE2034BB3000DEF489 /* sv */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		AC8493D42034BB3A00DEF489 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC8493D32034BB3A00DEF489 /* sv */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -383,6 +411,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -440,6 +469,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

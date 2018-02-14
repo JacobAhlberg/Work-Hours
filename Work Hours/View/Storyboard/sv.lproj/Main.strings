@@ -1,0 +1,93 @@
+/* Class = "UINavigationItem"; title = "Customers"; ObjectID = "0e6-ZU-CuO"; */
+"0e6-ZU-CuO.title" = "Kunder";
+
+/* Class = "UILabel"; text = "No customer selected"; ObjectID = "3wp-6z-v5u"; */
+"3wp-6z-v5u.text" = "Ingen kund vald";
+
+/* Class = "UILabel"; text = "New timer"; ObjectID = "6Vx-nY-sC6"; */
+"6Vx-nY-sC6.text" = "Ny timer";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "8mQ-YV-mLb"; */
+"8mQ-YV-mLb.text" = "Datum";
+
+/* Class = "UILabel"; text = "Job location, tap to change"; ObjectID = "9m4-Rz-Uwc"; */
+"9m4-Rz-Uwc.text" = "Jobbplats, tryck för att ändra";
+
+/* Class = "UILabel"; text = "Minutes:"; ObjectID = "56w-it-c67"; */
+"56w-it-c67.text" = "Minuter:";
+
+/* Class = "UILabel"; text = "Started: 2017-02-10 13:30"; ObjectID = "HUD-Tq-Gg7"; */
+"HUD-Tq-Gg7.text" = "Började: 2017-02-10 13:30";
+
+/* Class = "UILabel"; text = "Start time"; ObjectID = "JNh-YJ-emS"; */
+"JNh-YJ-emS.text" = "Starttid";
+
+/* Class = "UITableViewSection"; headerTitle = "Job information"; ObjectID = "MLM-Va-aOZ"; */
+"MLM-Va-aOZ.headerTitle" = "Jobbinformation";
+
+/* Class = "UILabel"; text = "Break Hours:"; ObjectID = "NDX-QL-K7Z"; */
+"NDX-QL-K7Z.text" = "Rast Timmar:";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "NMl-xk-qQ7"; */
+"NMl-xk-qQ7.text" = "Titel";
+
+/* Class = "UIButton"; normalTitle = "START BREAK"; ObjectID = "NTo-2d-Kfl"; */
+"NTo-2d-Kfl.normalTitle" = "STARTA RAST";
+
+/* Class = "UILabel"; text = "End time"; ObjectID = "OY2-U8-6b1"; */
+"OY2-U8-6b1.text" = "Sluttid";
+
+/* Class = "UITableViewSection"; headerTitle = "Notes"; ObjectID = "SlH-ir-Mkt"; */
+"SlH-ir-Mkt.headerTitle" = "Anteckningar";
+
+/* Class = "UIBarButtonItem"; title = "Save"; ObjectID = "UGe-w5-80t"; */
+"UGe-w5-80t.title" = "Spara";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "Uuc-iP-hhV"; */
+"Uuc-iP-hhV.title" = "Tillbaka";
+
+/* Class = "UILabel"; text = "You haven't added any new time reports yet. You can  simply create a time report by pressing the add button in the upper right corner."; ObjectID = "XfE-C5-Wc4"; */
+"XfE-C5-Wc4.text" = "Du har inte lagt till några tidrapporter ännu. Du kan enkelt lägga till en tidrapport genom att trycka på knappen i övre högra hörnet.";
+
+/* Class = "UINavigationItem"; title = "New Time Report"; ObjectID = "agg-fy-e93"; */
+"agg-fy-e93.title" = "Ny tidrapport";
+
+/* Class = "UILabel"; text = "No customer selected"; ObjectID = "ca3-Bt-P1N"; */
+"ca3-Bt-P1N.text" = "Ingen kund vald";
+
+/* Class = "UIButton"; normalTitle = "Take photo"; ObjectID = "dIt-Yx-g4k"; */
+"dIt-Yx-g4k.normalTitle" = "Ta foto";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "fG5-fh-Qls"; */
+"fG5-fh-Qls.text" = "Etikett";
+
+/* Class = "UILabel"; text = "Registration is active"; ObjectID = "fwg-cU-eC9"; */
+"fwg-cU-eC9.text" = "Registrering är aktiv";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "g0z-2H-69E"; */
+"g0z-2H-69E.text" = "Undertext";
+
+/* Class = "UILabel"; text = "Timer is active - Click to view"; ObjectID = "gu2-Sx-pHY"; */
+"gu2-Sx-pHY.text" = "Timern är aktiv - Tryck för att visa";
+
+/* Class = "UIButton"; normalTitle = "START TIMER"; ObjectID = "hJt-er-ub2"; */
+"hJt-er-ub2.normalTitle" = "STARTA TIMERN";
+
+/* Class = "UILabel"; text = "Abscent"; ObjectID = "miq-qF-JRu"; */
+"miq-qF-JRu.text" = "Frånvarande";
+
+/* Class = "UITableViewSection"; headerTitle = "Customer"; ObjectID = "owV-7y-6xd"; */
+"owV-7y-6xd.headerTitle" = "Kund";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "pvz-ra-FIj"; */
+"pvz-ra-FIj.text" = "Titel";
+
+/* Class = "UILabel"; text = "New report"; ObjectID = "qrc-yy-xAN"; */
+"qrc-yy-xAN.text" = "Ny rapport";
+
+/* Class = "UITableViewSection"; headerTitle = "Additional files"; ObjectID = "t8Z-5B-VqJ"; */
+"t8Z-5B-VqJ.headerTitle" = "Ytterligare filer";
+
+/* Class = "UIButton"; normalTitle = "Library"; ObjectID = "y8H-nT-BNc"; */
+"y8H-nT-BNc.normalTitle" = "Bibliotek";
+

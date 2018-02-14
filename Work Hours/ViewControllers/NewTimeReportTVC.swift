@@ -154,15 +154,15 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
             breakHourTxf.isEnabled = false
             breakMinutesTxf.isEnabled = false
             
-            startTimeLbl.alpha = 0.5
-            endTimeLbl.alpha = 0.5
-            breakHLbl.alpha = 0.5
-            breakMLbl.alpha = 0.5
+            startTimeLbl.alpha = 0.3
+            endTimeLbl.alpha = 0.3
+            breakHLbl.alpha = 0.3
+            breakMLbl.alpha = 0.3
             
-            startTimeTxf.alpha = 0.5
-            endTimeTxf.alpha = 0.5
-            breakHourTxf.alpha = 0.5
-            breakMinutesTxf.alpha = 0.5
+            startTimeTxf.alpha = 0.3
+            endTimeTxf.alpha = 0.3
+            breakHourTxf.alpha = 0.3
+            breakMinutesTxf.alpha = 0.3
         } else {
             startTimeTxf.isEnabled = true
             endTimeTxf.isEnabled = true

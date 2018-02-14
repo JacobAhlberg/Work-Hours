@@ -1,0 +1,9 @@
+/* (No Comment) */
+"CFBundleName" = "";
+
+/* (No Comment) */
+"NSCameraUsageDescription" = "Tillåter du appen att öppna";
+
+/* (No Comment) */
+"NSLocationWhenInUseUsageDescription" = "Vi behöver veta din position för att kunna visa kartan korrekt";
+

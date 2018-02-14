@@ -1,0 +1,48 @@
+/* Are you sure? */
+"Are you sure?" = "Är du säker?";
+
+/* Break is active */
+"Break is active" = "Rast är aktiv";
+
+/* Cancel */
+"Cancel" = "Avbryt";
+
+/* Continue timer */
+"Continue timer" = "Fortsätt timer";
+
+/* Discard */
+"Discard" = "Kasta";
+
+/* Do you want to discard current report? */
+"Do you want to discard current report?" = "Vill du kasta bort rapporten?";
+
+/* Do you want to discard current timer? */
+"Do you want to discard current timer?" = "Vill du kasta bort timern?";
+
+/* Done keyboard */
+"Done" = "Färdig";
+
+/* Register */
+"Register" = "Registrera";
+
+/* Registration is active */
+"Registration is active" = "Registrering är aktiv";
+
+/* STOP BREAK */
+"START BREAK" = "STARTA RAST";
+
+/* START TIMER */
+"START TIMER" = "STARTA TIMER";
+
+/* STOP BREAK */
+"STOP BREAK" = "STOPPA RAST";
+
+/* STOP TIMER */
+"STOP TIMER" = "STOPPA TIMER";
+
+/* Search for places */
+"Search for places" = "Sök efter platser";
+
+/* Timer has been stopped */
+"Timer has been stopped" = "Timern har stoppats";
+
