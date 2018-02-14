@@ -953,29 +953,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9ny-c6-UDd"/>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="jAW-YA-iD5"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="jAW-YA-iD5">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="kTZ-RU-KYY">
+                            <connections>
+                                <action selector="doneBtnPressed:" destination="06J-gx-9yt" id="1sF-JI-eU6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="6Iv-ur-9oT" id="kiB-nG-sZ6"/>
-                        <outlet property="searchDisplayController" destination="R6v-GR-mrZ" id="vj2-al-kyd"/>
+                        <segue destination="1e7-yx-Ged" kind="unwind" identifier="dismissMapVCSegue" unwindAction="unwindSegueWithSegue:" id="EGK-uA-ylH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uhs-0e-oaw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="9eh-TW-s8E">
-                    <connections>
-                        <outlet property="delegate" destination="06J-gx-9yt" id="ZVs-7d-Qid"/>
-                        <outlet property="searchContentsController" destination="06J-gx-9yt" id="r0Y-hT-QJA"/>
-                        <outlet property="searchResultsDataSource" destination="06J-gx-9yt" id="8Zl-kk-pOK"/>
-                        <outlet property="searchResultsDelegate" destination="06J-gx-9yt" id="dSt-zq-Chl"/>
-                    </connections>
-                </searchDisplayController>
-                <searchDisplayController id="R6v-GR-mrZ">
-                    <connections>
-                        <outlet property="delegate" destination="06J-gx-9yt" id="v1Q-fq-fis"/>
-                        <outlet property="searchContentsController" destination="06J-gx-9yt" id="Ab7-CZ-dZz"/>
-                        <outlet property="searchResultsDataSource" destination="06J-gx-9yt" id="AyF-1I-ZUp"/>
-                        <outlet property="searchResultsDelegate" destination="06J-gx-9yt" id="hZE-pe-pPd"/>
-                    </connections>
-                </searchDisplayController>
+                <exit id="1e7-yx-Ged" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2157.5999999999999" y="-229.06403940886702"/>
         </scene>

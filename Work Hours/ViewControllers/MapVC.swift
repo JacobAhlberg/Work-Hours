@@ -22,6 +22,7 @@ class MapVC: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, H
     
     // MARK: - Class variables
     let locationManager = CLLocationManager()
+    let userLocation: CLLocation? = nil
     var selectedPin: MKPlacemark?
     
     
@@ -33,6 +34,24 @@ class MapVC: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, H
         setupSearchController()
         
     }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "dismissMapVCSegue" {
+            guard let newTimeReportVC = segue.destination as? NewTimeReportTVC else { return }
+            newTimeReportVC.workLocation = sender as? CLLocation
+        }
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func doneBtnPressed(_ sender: Any) {
+        if let selectedPin = selectedPin, let location = selectedPin.location {
+            performSegue(withIdentifier: "dismissMapVCSegue", sender: location)
+        }
+    }
+    
     
     // MARK: - Functions
     
