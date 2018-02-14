@@ -49,6 +49,8 @@ class MapVC: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, H
     @IBAction func doneBtnPressed(_ sender: Any) {
         if let selectedPin = selectedPin, let location = selectedPin.location {
             performSegue(withIdentifier: "dismissMapVCSegue", sender: location)
+        } else {
+            performSegue(withIdentifier: "dismissMapVCSegue", sender: userLocation)
         }
     }
     
