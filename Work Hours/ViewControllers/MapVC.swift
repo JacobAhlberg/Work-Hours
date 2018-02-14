@@ -22,11 +22,10 @@ class MapVC: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, H
     
     // MARK: - Class variables
     let locationManager = CLLocationManager()
-    let userLocation: CLLocation? = nil
+    var userLocation: CLLocation?
     var selectedPin: MKPlacemark?
     
     var findFirstLocation = true
-    
     
     // MARK: - Application runtime
 
@@ -34,7 +33,6 @@ class MapVC: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, H
         super.viewDidLoad()
         findUserLocation()
         setupSearchController()
-        
     }
     
     // MARK: - Navigation
@@ -71,14 +69,15 @@ class MapVC: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, H
     
     
     // MARK: - Functions
-    
     func findUserLocation() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
+        if userLocation == nil, CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestWhenInUseAuthorization()
+        } else {
+            guard let location = userLocation else { return }
+            setLocationMarker(location: location)
         }
     }
     
@@ -99,8 +98,6 @@ class MapVC: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, H
         // Dims in the background while searching
         resultSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
-        
-        
     }
     
     // MARK: - CLLocationManager delegate
@@ -113,20 +110,23 @@ class MapVC: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, H
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if findFirstLocation {
-            if let location = locations.first {
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = location.coordinate
-                mapView.addAnnotation(annotation)
-                let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-                let region = MKCoordinateRegion(center: location.coordinate, span: span)
-                mapView.setRegion(region, animated: true)
-            }
+            guard let location = locations.first else { return }
+            setLocationMarker(location: location)
             findFirstLocation = false
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error.localizedDescription)
+    }
+    
+    func setLocationMarker(location: CLLocation) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location.coordinate
+        mapView.addAnnotation(annotation)
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: location.coordinate, span: span)
+        mapView.setRegion(region, animated: true)
     }
     
     // MARK: - Handle Map Search delegate

@@ -670,14 +670,19 @@
                     <connections>
                         <outlet property="abscentBtn" destination="t0U-z6-NvF" id="Wr2-aL-S9x"/>
                         <outlet property="additionalFileCollectionView" destination="Lzq-mj-AsI" id="rMO-z4-LbJ"/>
+                        <outlet property="breakHLbl" destination="NDX-QL-K7Z" id="Blk-dB-aP8"/>
                         <outlet property="breakHourTxf" destination="Njl-op-da4" id="6eo-Mq-D7f"/>
+                        <outlet property="breakMLbl" destination="56w-it-c67" id="gWe-WP-uxG"/>
                         <outlet property="breakMinutesTxf" destination="3fi-Va-0HU" id="uMF-lD-Yw5"/>
                         <outlet property="customerLbl" destination="3wp-6z-v5u" id="w6d-Dt-GpP"/>
                         <outlet property="dateTxf" destination="l07-Hb-MQJ" id="Mke-vL-7yq"/>
+                        <outlet property="endTimeLbl" destination="OY2-U8-6b1" id="5Lz-HZ-Zqz"/>
                         <outlet property="endTimeTxf" destination="FHD-pQ-b4e" id="w71-dH-anh"/>
                         <outlet property="mapView" destination="WD0-b4-BH2" id="zk5-Mt-BOP"/>
                         <outlet property="notesTxv" destination="M0K-EW-nSC" id="6lI-vb-V0q"/>
+                        <outlet property="startTimeLbl" destination="JNh-YJ-emS" id="CqS-hj-JZ9"/>
                         <outlet property="startTimeTxf" destination="vlm-Eq-y16" id="JDb-tb-Ba4"/>
+                        <outlet property="titleLbl" destination="NMl-xk-qQ7" id="ohE-32-tgb"/>
                         <outlet property="titleTxf" destination="kiy-Fu-w5f" id="09H-Vc-DQl"/>
                         <segue destination="06J-gx-9yt" kind="show" identifier="mapSegue" id="wlD-RU-0as"/>
                     </connections>

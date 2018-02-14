@@ -20,8 +20,15 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     @IBOutlet weak var endTimeTxf: UITextField!
     @IBOutlet weak var breakHourTxf: UITextField!
     @IBOutlet weak var breakMinutesTxf: UITextField!
-    @IBOutlet weak var abscentBtn: UISwitch!
+    
     @IBOutlet weak var customerLbl: UILabel!
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var startTimeLbl: UILabel!
+    @IBOutlet weak var endTimeLbl: UILabel!
+    @IBOutlet weak var breakHLbl: UILabel!
+    @IBOutlet weak var breakMLbl: UILabel!
+    
+    @IBOutlet weak var abscentBtn: UISwitch!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var notesTxv: UITextView!
     @IBOutlet weak var additionalFileCollectionView: UICollectionView!
@@ -41,7 +48,6 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     var startTime: Date?
     var endTime: Date?
     var breakTime: (Int, Int)?
-    
     
     // MARK: - Application runtime
     
@@ -81,6 +87,15 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     // MARK: - Navigation
     
     @IBAction func unwindSegue(segue: UIStoryboardSegue) { }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "mapSegue" {
+            guard let mapVC = segue.destination as? MapVC else { return }
+            if let location = workLocation {
+                mapVC.userLocation = location
+            }
+        }
+    }
     
     // MARK: - IBActions
     
@@ -138,6 +153,12 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
             endTimeTxf.isEnabled = false
             breakHourTxf.isEnabled = false
             breakMinutesTxf.isEnabled = false
+            
+            startTimeLbl.alpha = 0.5
+            endTimeLbl.alpha = 0.5
+            breakHLbl.alpha = 0.5
+            breakMLbl.alpha = 0.5
+            
             startTimeTxf.alpha = 0.5
             endTimeTxf.alpha = 0.5
             breakHourTxf.alpha = 0.5
@@ -151,6 +172,10 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
             endTimeTxf.alpha = 1
             breakHourTxf.alpha = 1
             breakMinutesTxf.alpha = 1
+            startTimeLbl.alpha = 1
+            endTimeLbl.alpha = 1
+            breakHLbl.alpha = 1
+            breakMLbl.alpha = 1
         }
     }
     
@@ -223,11 +248,6 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         else { endTimeTxf.text = dateFormatter.string(from: sender.date) }
         
     }
-    
-    @objc override func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
     
     // MARK: - TextField delegates
     
