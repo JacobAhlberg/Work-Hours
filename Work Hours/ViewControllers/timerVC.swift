@@ -84,13 +84,13 @@ class TimerVC: UIViewController {
     }
     
     // MARK: - Navigation
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "newTimeReportSegue" {
             guard let newTimeReportVC = segue.destination as? NewTimeReportTVC else { return }
             newTimeReportVC.breakTime = secondsToHoursMinutesSeconds(seconds: Int(totalBreakTime))
             newTimeReportVC.startTime = startTime
             newTimeReportVC.endTime = finishedTime
+            self.resetData()
         }
     }
     
