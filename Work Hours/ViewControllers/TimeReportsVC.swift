@@ -12,8 +12,11 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
     // MARK: - IBOutlets
     @IBOutlet weak var noTimeReportsLabel: UILabel!
+    @IBOutlet weak var noTimeArrowImg: UIImageView!
     @IBOutlet weak var timeReportsTableView: UITableView!
     @IBOutlet weak var activeRegView: UIView!
+    @IBOutlet weak var cityImg: UIImageView!
+    
     
     // MARK: - Variables
     var timeReportsArray: [String] = []
@@ -44,7 +47,9 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         if !timeReportsArray.isEmpty {
             noTimeReportsLabel.isHidden = true
+            noTimeArrowImg.isHidden = true
             timeReportsTableView.isHidden = false
+            cityImg.isHidden = true
         }
     }
     
@@ -54,9 +59,13 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             if startTime < Date() {
                 activeRegView.isHidden = false
                 pulsate(view: activeRegView)
+                noTimeArrowImg.isHidden = true
             }
         } else {
             activeRegView.isHidden = true
+            if timeReportsArray.isEmpty {
+                noTimeArrowImg.isHidden = false
+            }
         }
     }
     
