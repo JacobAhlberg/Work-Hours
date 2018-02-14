@@ -30,8 +30,7 @@ class MapVC: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, H
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLocationManager()
-        setupSearchController()
+        findUserLocation()
         
     }
     
@@ -57,11 +56,14 @@ class MapVC: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate, H
     
     // MARK: - Functions
     
-    func setupLocationManager() {
+    func findUserLocation() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+        }
     }
     
     func setupSearchController() {
