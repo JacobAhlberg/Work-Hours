@@ -31,6 +31,7 @@
 		AC8493CD2034BB3000DEF489 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AC8493CF2034BB3000DEF489 /* Localizable.strings */; };
 		AC8493D22034BB3A00DEF489 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AC8493D42034BB3A00DEF489 /* InfoPlist.strings */; };
 		AC85E22520305C90009CE72A /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC85E22420305C90009CE72A /* PushManager.swift */; };
+		ACF654DA2036066000C0C9CB /* TimeReportsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF654D92036066000C0C9CB /* TimeReportsCell.swift */; };
 		AFDF28CDFEEF0A453C5288F1 /* Pods_Work_Hours.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C51D2C207BB45FB398CCB74 /* Pods_Work_Hours.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		AC8493CE2034BB3000DEF489 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AC8493D32034BB3A00DEF489 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AC85E22420305C90009CE72A /* PushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushManager.swift; sourceTree = "<group>"; };
+		ACF654D92036066000C0C9CB /* TimeReportsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeReportsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			children = (
 				49154454202DDAC2001CC678 /* AdditionalFileCell.swift */,
 				49D43D662036011A008FA8B3 /* CustomerCell.swift */,
+				ACF654D92036066000C0C9CB /* TimeReportsCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				49D28237203568E2009FCC33 /* LoginVC.swift in Sources */,
 				49D43D672036011A008FA8B3 /* CustomerCell.swift in Sources */,
 				49B5B702202B5DAB00ED4897 /* NewTimeReportTVC.swift in Sources */,
+				ACF654DA2036066000C0C9CB /* TimeReportsCell.swift in Sources */,
 				49D43D5E2035BFFC008FA8B3 /* FirebaseManager.swift in Sources */,
 				49154458202DEE69001CC678 /* PopoverVC.swift in Sources */,
 				494ED1B1202B4BEC004C7CDD /* AppDelegate.swift in Sources */,
