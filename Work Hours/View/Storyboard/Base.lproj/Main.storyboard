@@ -713,6 +713,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yMG-uv-TrJ">
                                 <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="0oM-hZ-cJt">
+                                    <rect key="frame" x="0.0" y="92" width="375" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CustomerCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="customerCell" rowHeight="64" id="oJY-VD-pXC" customClass="CustomerCell" customModule="Work_Hours" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="64"/>
@@ -770,9 +775,11 @@
                     <navigationItem key="navigationItem" title="Customers" id="0e6-ZU-CuO"/>
                     <connections>
                         <outlet property="customerTableView" destination="yMG-uv-TrJ" id="jNR-qm-k6L"/>
+                        <segue destination="2jr-mQ-kxW" kind="unwind" unwindAction="unwindSegueWithSegue:" id="Vxp-Xx-BDl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0S-QC-XZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="2jr-mQ-kxW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2158" y="514"/>
         </scene>
@@ -810,9 +817,6 @@
                                     <constraint firstAttribute="height" constant="35" id="U3V-on-VO4"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <segue destination="hra-wt-Vke" kind="show" id="ITL-OY-ZpS"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJt-er-ub2" customClass="OutlinedButton" customModule="Work_Hours" customModuleProvider="target">
                                 <rect key="frame" x="91" y="463.66666666666669" width="193" height="61.000000000000057"/>
