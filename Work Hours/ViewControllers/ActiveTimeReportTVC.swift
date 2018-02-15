@@ -70,6 +70,15 @@ class ActiveTimeReportTVC: UITableViewController, UICollectionViewDataSource, UI
         
     }
     
+    // IB Actions
+    @IBAction func deleteBtnPressed(_ sender: Any) {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    
+    // MARK: - Delegates
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }

@@ -33,7 +33,6 @@ class FirebaseManager {
                 }
                 SpinnerManager.shared.stopSpinner()
             }
-            dump(fetchedReports)
             handler(fetchedReports)
         }
     }
