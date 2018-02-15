@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ActiveTimeReportTVC: UITableViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
 
@@ -27,6 +28,8 @@ class ActiveTimeReportTVC: UITableViewController, UICollectionViewDataSource, UI
     
     var activeReport: TimeReport?
     let dateFormatter = DateFormatter()
+    
+    var imagesNames: [String] = []
     
     // MARK: - Application runtime
     
@@ -60,20 +63,37 @@ class ActiveTimeReportTVC: UITableViewController, UICollectionViewDataSource, UI
             if let notes = a.notes {
                 noteView.text = notes
             }
+            if let images = a.images {
+                imagesNames = images
+            }
         }
         
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 0
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "activeImage", for: indexPath) as? ActiveTimeReportImageCell else { return UICollectionViewCell() }
+        
+        let storageRef = Storage.storage().reference()
+        let imageloadRef = storageRef.child(imagesNames[indexPath.row])
+        imageloadRef.getData(maxSize: 100 * 1024 * 1024) { (data, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                if let data = data {
+                    cell.imageView.image = UIImage(data: data)
+                    collectionView.reloadData()
+                }
+            }
+        }
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return imagesNames.count
     }
     
 }
