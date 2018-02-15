@@ -55,7 +55,8 @@ class ActiveTimeReportTVC: UITableViewController, UICollectionViewDataSource, UI
                 endLbl.text = dateFormatter.string(from: end)
             }
             if let breakText = a.breakTime {
-                breakLbl.text = String(breakText)
+                let (hours, minutes) = secondsToHoursMinutesSeconds(seconds: Int(breakText))
+                breakLbl.text = NSLocalizedString("\(hours) hours and \(minutes) minutes break", comment: "X hours and X minutes break")
             }
             if let customer = a.customer {
                 customerLbl.text = customer
@@ -68,6 +69,10 @@ class ActiveTimeReportTVC: UITableViewController, UICollectionViewDataSource, UI
             }
         }
         
+    }
+    
+    func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int) {
+        return (seconds / 3600, (seconds % 3600) / 60)
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
