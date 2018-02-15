@@ -36,6 +36,18 @@ class CustomersVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     // MARK: - Navigation
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "newTimeReportSegue" {
+            guard let newTimeReportVC = segue.destination as? NewTimeReportTVC else { return }
+            if let row = sender as? Int {
+                newTimeReportVC.customerLbl.text = customers[row]
+            }
+        }
+    }
+    
+    // MARK: - Functions
+    
+    
     // MARK: - TableView Delegate & Datasourcwe
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return customers.count
@@ -46,6 +58,9 @@ class CustomersVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         cell.customerName.text = customers[indexPath.row]
         return cell
     }
-
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "newTimeReportSegue", sender: indexPath.row)
+    }
 
 }
