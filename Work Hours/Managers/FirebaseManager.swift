@@ -26,12 +26,14 @@ class FirebaseManager {
             if let error = error {
                 print("Error getting documents: \(error)")
             } else {
-                for document in querySnapshot!.documents {
+                guard let snapshot = querySnapshot else { return }
+                for document in snapshot.documents {
                     let report = TimeReport(data: document.data())
                     fetchedReports.append(report)
                 }
                 SpinnerManager.shared.stopSpinner()
             }
+            dump(fetchedReports)
             handler(fetchedReports)
         }
     }
