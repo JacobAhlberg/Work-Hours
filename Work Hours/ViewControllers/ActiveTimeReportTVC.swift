@@ -79,7 +79,7 @@ class ActiveTimeReportTVC: UITableViewController, UICollectionViewDataSource, UI
         
         let storageRef = Storage.storage().reference()
         let imageloadRef = storageRef.child(imagesNames[indexPath.row])
-        imageloadRef.getData(maxSize: 100 * 1024 * 1024) { (data, error) in
+        imageloadRef.getData(maxSize: 10 * 1024 * 1024) { (data, error) in
             if let error = error {
                 print(error.localizedDescription)
             } else {

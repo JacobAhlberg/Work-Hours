@@ -71,8 +71,10 @@ class FirebaseManager {
     
     func uploadImages(name: String, image: UIImage, handler: @escaping (_ name: String?, Error?) -> ()) {
         let storageRef = Firebase.Storage.storage().reference().child("\(name).png")
-        if let uploadData = UIImagePNGRepresentation(image) {
-            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+        if let uploadData = UIImageJPEGRepresentation(image, 0.7) {
+            let metaType = StorageMetadata()
+            metaType.contentType = "image/jpeg"
+            storageRef.putData(uploadData, metadata: metaType, completion: { (metadata, error) in
                 if let error = error {
                     print(error.localizedDescription)
                     handler(nil, error)
