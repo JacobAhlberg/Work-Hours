@@ -77,7 +77,6 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         additionalFileCollectionView.reloadData()
-        //        currentDate()
         setDataFromTimerVC()
         
         if let workLocation = workLocation {
@@ -109,8 +108,8 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     @IBAction func saveBtnPressed(_ sender: Any) {
         var data: [String: Any?] = [:]
         guard let date = date,
-            let startTime = startTimeTxf.text,
-            let endTime = endTimeTxf.text,
+            let startTime = startTime,
+            let endTime = endTime,
             let hoursTxt = breakHourTxf.text,
             let minutesTxt = breakMinutesTxf.text,
             let customer = customerLbl.text
@@ -120,9 +119,6 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         var seconds = 0
         if let hours = Int(hoursTxt), let minutes = Int(minutesTxt) {
             seconds = (hours * 3600) + (minutes * 60 )
-//            if !abscentBtn.isOn && hoursTxt.count < 1 && minutesTxt.count < 1 {
-//                showAlert(messageForUser: NSLocalizedString("Hours and minutes can only contain numbers", comment: "Hours and minutes can only contain numbers"))
-//            }
         }
         
         
@@ -145,8 +141,8 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
             data = [
                 "date" : date,
                 "title" : titleTxf.text,
-                "startTime" : dateFormatter.date(from: startTime),
-                "endTime" : dateFormatter.date(from: endTime),
+                "startTime" : startTime,
+                "endTime" : endTime,
                 "breakTime" : seconds,
                 "abscent" : false,
                 "customer" : customer,
@@ -247,6 +243,8 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     func setDataFromTimerVC() {
         if let start = startTime {
             dateTxf.text = dateFormatter.string(from: start)
+            date = start
+            startTime = start
             dateFormatter.dateFormat = "HH:mm"
             startTimeTxf.text = dateFormatter.string(from: start)
         } else {
@@ -254,6 +252,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         }
         
         if let end = endTime {
+            endTime = end
             endTimeTxf.text = dateFormatter.string(from: end)
         }
         
@@ -306,14 +305,17 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         toolbar.sizeToFit()
         
         // Custom navigatation bar buttons for the keyboard
-        let doneBtn = UIBarButtonItem(title: NSLocalizedString("Done", comment: "Done keyboard"), style: .done, target: self, action: #selector(dismissKeyboard))
+        let doneBtn = UIBarButtonItem(title: NSLocalizedString("Done", comment: "Done (keyboard)"), style: .done, target: self, action: #selector(dismissKeyboard))
         
         toolbar.setItems([doneBtn], animated: false)
         toolbar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         toolbar.barTintColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
         
         if showStartTime {
-            if let start = startTime { picker.date = start }
+            if let start = startTime {
+                picker.date = start
+            }
+            print("--------------\(picker.date)")
             picker.tag = 1
             picker.addTarget(self, action: #selector(handleUIDatePicker(sender:)), for: .valueChanged)
         } else {
@@ -334,7 +336,6 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
             date = sender.date
         } else if sender.tag == 2 {
             endTimeTxf.text = dateFormatter.string(from: sender.date)
-            date = sender.date
         } else {
             dateFormatter.dateFormat = "yyyy-MM-dd"
             dateTxf.text = dateFormatter.string(from: sender.date)
