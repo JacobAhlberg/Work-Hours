@@ -800,7 +800,7 @@
                     <navigationItem key="navigationItem" title="Customers" id="0e6-ZU-CuO"/>
                     <connections>
                         <outlet property="customerTableView" destination="yMG-uv-TrJ" id="jNR-qm-k6L"/>
-                        <segue destination="2jr-mQ-kxW" kind="unwind" unwindAction="unwindSegueWithSegue:" id="Vxp-Xx-BDl"/>
+                        <segue destination="2jr-mQ-kxW" kind="unwind" identifier="newTimeReportSegue" unwindAction="unwindSegueWithSegue:" id="Vxp-Xx-BDl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0S-QC-XZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
