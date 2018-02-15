@@ -10,5 +10,8 @@ import UIKit
 
 class TimeReportsCell: UITableViewCell {
 
+    @IBOutlet weak var titleJobLbl: UILabel!
+    @IBOutlet weak var dateLbl: UILabel!
+    
     
 }

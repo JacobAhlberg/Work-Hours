@@ -35,13 +35,37 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="doneJob" rowHeight="132" id="yiC-Bh-ozO">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="doneJob" rowHeight="132" id="yiC-Bh-ozO" customClass="TimeReportsCell" customModule="Work_Hours" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="132"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yiC-Bh-ozO" id="oh1-Se-x8Q">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="131.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title of job" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0C-aF-DVS">
+                                                    <rect key="frame" x="15" y="10.999999999999998" width="81" height="20.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sS-Oh-CmY">
+                                                    <rect key="frame" x="318" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0sS-Oh-CmY" firstAttribute="top" secondItem="oh1-Se-x8Q" secondAttribute="topMargin" id="6gr-ai-LHJ"/>
+                                                <constraint firstItem="Q0C-aF-DVS" firstAttribute="top" secondItem="oh1-Se-x8Q" secondAttribute="topMargin" id="CZq-Tw-7v7"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="0sS-Oh-CmY" secondAttribute="trailing" id="lFo-v6-Diy"/>
+                                                <constraint firstItem="Q0C-aF-DVS" firstAttribute="leading" secondItem="oh1-Se-x8Q" secondAttribute="leadingMargin" id="yAu-q8-AYf"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLbl" destination="0sS-Oh-CmY" id="YFx-Ja-cNH"/>
+                                            <outlet property="titleJobLbl" destination="Q0C-aF-DVS" id="VQl-lw-ciY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -719,7 +743,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CustomerCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="customerCell" rowHeight="64" id="oJY-VD-pXC" customClass="CustomerCell" customModule="Work_Hours" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CustomerCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="customerCell" rowHeight="64" id="oJY-VD-pXC" customClass="CustomerCell" customModule="Work_Hours" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oJY-VD-pXC" id="R4t-dk-h4g">
@@ -1178,7 +1202,6 @@
         <image name="timer" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ITL-OY-ZpS"/>
         <segue reference="vCX-YI-RNi"/>
     </inferredMetricsTieBreakers>
 </document>
