@@ -71,6 +71,10 @@ class ActiveTimeReportTVC: UITableViewController, UICollectionViewDataSource, UI
         
     }
     
+    func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int) {
+        return (seconds / 3600, (seconds % 3600) / 60)
+    }
+    
     // IB Actions
     @IBAction func deleteBtnPressed(_ sender: Any) {
         
