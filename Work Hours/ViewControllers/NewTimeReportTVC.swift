@@ -156,6 +156,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         }
         
         // TODO: Save images
+        // TODO: Send back to front page
     }
     
     
