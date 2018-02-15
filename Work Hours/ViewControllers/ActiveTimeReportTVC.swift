@@ -55,7 +55,8 @@ class ActiveTimeReportTVC: UITableViewController, UICollectionViewDataSource, UI
                 endLbl.text = dateFormatter.string(from: end)
             }
             if let breakText = a.breakTime {
-                breakLbl.text = String(breakText)
+                let (hours, minutes) = secondsToHoursMinutesSeconds(seconds: Int(breakText))
+                breakLbl.text = NSLocalizedString("\(hours) hours and \(minutes) minutes break", comment: "X hours and X minutes break")
             }
             if let customer = a.customer {
                 customerLbl.text = customer
@@ -88,7 +89,7 @@ class ActiveTimeReportTVC: UITableViewController, UICollectionViewDataSource, UI
         
         let storageRef = Storage.storage().reference()
         let imageloadRef = storageRef.child(imagesNames[indexPath.row])
-        imageloadRef.getData(maxSize: 100 * 1024 * 1024) { (data, error) in
+        imageloadRef.getData(maxSize: 10 * 1024 * 1024) { (data, error) in
             if let error = error {
                 print(error.localizedDescription)
             } else {
