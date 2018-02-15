@@ -27,6 +27,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         setMotion()
     }
     
+    
     // MARK: - Rotations
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -78,24 +79,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         })
                     }
                 })
-                
-                
-//                AuthManager.instance.signInUser(email: email, password: password, handler: { (user, error) in
-//                    if let error = error {
-//                        self.showAlert(messageForUser: error.localizedDescription)
-//                        print(error.localizedDescription)
-//                    } else {
-//                        print("It worked")
-//                    }
-//                })
             } else {
                 showAlert(messageForUser: "Password needs to be at least 6 characters long")
             }
-            
-            
-            
-            
-            
         } else {
             showAlert(messageForUser: "You have to fill both fields if you wish to log in.")
         }
@@ -111,13 +97,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         let motionEffectGroup = UIMotionEffectGroup()
         motionEffectGroup.motionEffects = [horizontalMotionEffect]
         backgroundImageView.addMotionEffect(motionEffectGroup)
-    }
-    
-    func showAlert(messageForUser message: String) {
-        let alertVC = UIAlertController(title: NSLocalizedString("Information", comment: "Information"), message: NSLocalizedString(message, comment: message), preferredStyle: .alert)
-        let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)
-        alertVC.addAction(okAction)
-        present(alertVC, animated: true, completion: nil)
     }
     
     // MARK: - Textfield delegate

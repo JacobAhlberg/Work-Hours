@@ -667,7 +667,11 @@
                                 <action selector="cancelBtnPressed:" destination="bdp-CN-fau" id="p1C-fH-GFD"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" style="done" id="UGe-w5-80t"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" style="done" id="UGe-w5-80t">
+                            <connections>
+                                <action selector="saveBtnPressed:" destination="bdp-CN-fau" id="Jkj-ym-X1p"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="abscentBtn" destination="t0U-z6-NvF" id="Wr2-aL-S9x"/>

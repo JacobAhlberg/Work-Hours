@@ -19,6 +19,8 @@
 		49B5B704202B5F8A00ED4897 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B5B703202B5F8A00ED4897 /* MapVC.swift */; };
 		49D28237203568E2009FCC33 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D28236203568E2009FCC33 /* LoginVC.swift */; };
 		49D2823E2035812F009FCC33 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D2823D2035812F009FCC33 /* AuthManager.swift */; };
+		49D43D5E2035BFFC008FA8B3 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D43D5D2035BFFC008FA8B3 /* FirebaseManager.swift */; };
+		49D43D632035CD91008FA8B3 /* TimeReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D43D622035CD91008FA8B3 /* TimeReport.swift */; };
 		AC0C0C23202EF2EA009D2D43 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C22202EF2EA009D2D43 /* Buttons.swift */; };
 		AC0C0C25202F0DB1009D2D43 /* TimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C24202F0DB1009D2D43 /* TimerVC.swift */; };
 		AC0C0C28202F3136009D2D43 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C27202F3136009D2D43 /* Functions.swift */; };
@@ -45,6 +47,8 @@
 		49B5B703202B5F8A00ED4897 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		49D28236203568E2009FCC33 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		49D2823D2035812F009FCC33 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		49D43D5D2035BFFC008FA8B3 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		49D43D622035CD91008FA8B3 /* TimeReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeReport.swift; sourceTree = "<group>"; };
 		625FE2B0A61982847559C32E /* Pods-Work Hours.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Work Hours.release.xcconfig"; path = "Pods/Target Support Files/Pods-Work Hours/Pods-Work Hours.release.xcconfig"; sourceTree = "<group>"; };
 		717B69E54BBAB2A6E05EF27A /* Pods-Work Hours.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Work Hours.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Work Hours/Pods-Work Hours.debug.xcconfig"; sourceTree = "<group>"; };
 		7C51D2C207BB45FB398CCB74 /* Pods_Work_Hours.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Work_Hours.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,9 +114,9 @@
 		494ED1AF202B4BEC004C7CDD /* Work Hours */ = {
 			isa = PBXGroup;
 			children = (
+				49D43D612035CD86008FA8B3 /* Model */,
 				AC85E22320305C81009CE72A /* Managers */,
 				AC0C0C26202F312B009D2D43 /* Globals */,
-				AC0C0C21202EF2D8009D2D43 /* Model */,
 				49B5B6FD202B52F100ED4897 /* View */,
 				49B5B6FF202B530600ED4897 /* ViewControllers */,
 				49B5B6FC202B52E800ED4897 /* Resources */,
@@ -173,9 +177,10 @@
 			path = "Custom Views";
 			sourceTree = "<group>";
 		};
-		AC0C0C21202EF2D8009D2D43 /* Model */ = {
+		49D43D612035CD86008FA8B3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				49D43D622035CD91008FA8B3 /* TimeReport.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -194,6 +199,7 @@
 			children = (
 				AC85E22420305C90009CE72A /* PushManager.swift */,
 				49D2823D2035812F009FCC33 /* AuthManager.swift */,
+				49D43D5D2035BFFC008FA8B3 /* FirebaseManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -363,12 +369,14 @@
 				AC0C0C28202F3136009D2D43 /* Functions.swift in Sources */,
 				491AADA720338002001C8265 /* LocationSearchTVC.swift in Sources */,
 				AC0C0C25202F0DB1009D2D43 /* TimerVC.swift in Sources */,
+				49D43D632035CD91008FA8B3 /* TimeReport.swift in Sources */,
 				494ED1B3202B4BEC004C7CDD /* TimeReportsVC.swift in Sources */,
 				AC85E22520305C90009CE72A /* PushManager.swift in Sources */,
 				AC8493C820349F2400DEF489 /* Extensions.swift in Sources */,
 				49B5B704202B5F8A00ED4897 /* MapVC.swift in Sources */,
 				49D28237203568E2009FCC33 /* LoginVC.swift in Sources */,
 				49B5B702202B5DAB00ED4897 /* NewTimeReportTVC.swift in Sources */,
+				49D43D5E2035BFFC008FA8B3 /* FirebaseManager.swift in Sources */,
 				49154458202DEE69001CC678 /* PopoverVC.swift in Sources */,
 				494ED1B1202B4BEC004C7CDD /* AppDelegate.swift in Sources */,
 			);

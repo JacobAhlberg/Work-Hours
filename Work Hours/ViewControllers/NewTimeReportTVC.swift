@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Firebase
 
 class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
@@ -55,7 +56,8 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         super.viewDidLoad()
         findUserLocation()
         
-    
+        // TODO: CREATE DATEPICKER FOR CURRENT DATE
+        
         
         // Creates a UIDatePicker for startDate and endDate
         let (startPicker, startToolbar) = setUpDatePicker(showStartTime: true)
@@ -100,6 +102,63 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     }
     
     // MARK: - IBActions
+    
+    @IBAction func saveBtnPressed(_ sender: Any) {
+        var data: [String: Any?] = [:]
+        guard let dateText = dateTxf.text,
+            let startTime = startTimeTxf.text,
+            let endTime = endTimeTxf.text,
+            let hoursTxt = breakHourTxf.text,
+            let minutesTxt = breakMinutesTxf.text,
+            let customer = customerLbl.text
+            else { return }
+        
+        // Hours and minutes to seconds
+        guard let hours = Int(hoursTxt),
+            let minutes = Int(minutesTxt)
+            else {
+                showAlert(messageForUser: NSLocalizedString("Hours and minutes can only contain numbers", comment: "Hours and minutes can only contain numbers"))
+                return
+        }
+        let seconds = (hours * 3600) + (minutes * 60 )
+        
+        // Get location
+        var location = CLLocation()
+        if let workLocation = workLocation {
+            location = workLocation
+        } else if let workLocation =  userCurrentLocation {
+            location = workLocation
+        }
+        
+        // If abscentBtn is active
+        if abscentBtn.isOn {
+            data = [
+                "date" : dateFormatter.date(from: dateText),
+                "abscent" : true,
+                "uid" : Auth.auth().currentUser
+            ]
+        } else {
+            data = [
+                "date" : dateFormatter.date(from: dateText),
+                "title" : titleTxf.text,
+                "startTime" : dateFormatter.date(from: startTime),
+                "endTime" : dateFormatter.date(from: endTime),
+                "breakTime" : seconds,
+                "abscent" : false,
+                "customer" : customer,
+                "location" : GeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude),
+                "notes" : notesTxv.text,
+                "uid" : Auth.auth().currentUser?.uid
+            ]
+        }
+        
+        FirebaseManager.instance.saveData(data: data) {
+            print("I did it")
+        }
+        
+        // TODO: Save images
+    }
+    
     
     @IBAction func cancelBtnPressed(_ sender: Any) {
         // Warn with haptic feedback
@@ -148,6 +207,8 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     
     
     // MARK: - Functions
+    
+    
     
     func userIsAbscent(userIsAbscent abscent: Bool) {
         if abscent {
