@@ -27,6 +27,10 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         setMotion()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        SpinnerManager.shared.stopSpinner()
+    }
+    
     
     // MARK: - Rotations
     
@@ -86,6 +90,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             showAlert(messageForUser: "You have to fill both fields if you wish to log in.")
         }
     }
+    
+    // MARK: - Unwind Segue
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) { }
     
     
     // MARK: - Functions

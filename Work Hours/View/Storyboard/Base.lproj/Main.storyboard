@@ -150,6 +150,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="9rQ-w7-cgY">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="user" id="5Pb-vf-MuD">
+                            <connections>
+                                <action selector="userBtnPressed:" destination="BYZ-38-t0r" id="9Xy-gj-BYH"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3Qy-mW-TUw">
                             <connections>
                                 <action selector="addBtnPressed:" destination="BYZ-38-t0r" id="14L-Oy-zw9"/>
@@ -168,9 +173,11 @@
                         <segue destination="bdp-CN-fau" kind="show" identifier="newTimeReportSegue" id="vCX-YI-RNi"/>
                         <segue destination="KOu-co-q87" kind="show" identifier="timerSegue" id="t0n-3V-wRA"/>
                         <segue destination="uIU-sm-w3Z" kind="show" identifier="showTimeReportSegue" id="BtO-jA-viQ"/>
+                        <segue destination="s1t-BW-eNJ" kind="unwind" identifier="unwindToLogin" unwindAction="unwindToLoginWithSegue:" id="3G0-Iu-Jjf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="s1t-BW-eNJ" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="Kfb-0u-ZFh">
                     <connections>
                         <action selector="activeRegViewPressed:" destination="BYZ-38-t0r" id="W4D-Pl-eKo"/>
@@ -1428,8 +1435,9 @@
         <image name="city" width="800" height="480"/>
         <image name="document" width="59" height="59"/>
         <image name="timer" width="60" height="60"/>
+        <image name="user" width="43" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="waF-NQ-lcL"/>
+        <segue reference="vCX-YI-RNi"/>
     </inferredMetricsTieBreakers>
 </document>

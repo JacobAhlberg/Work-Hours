@@ -1,11 +1,17 @@
 /* Class = "UINavigationItem"; title = "Customers"; ObjectID = "0e6-ZU-CuO"; */
 "0e6-ZU-CuO.title" = "Kunder";
 
+/* Class = "UITableViewSection"; headerTitle = "Location"; ObjectID = "0pM-Cc-6RV"; */
+"0pM-Cc-6RV.headerTitle" = "Plats";
+
 /* Class = "UILabel"; text = "No customer selected"; ObjectID = "3wp-6z-v5u"; */
 "3wp-6z-v5u.text" = "Ingen kund vald";
 
 /* Class = "UILabel"; text = "New timer"; ObjectID = "6Vx-nY-sC6"; */
 "6Vx-nY-sC6.text" = "Ny timer";
+
+/* Class = "UIButton"; normalTitle = "Log in"; ObjectID = "6o5-zH-DU2"; */
+"6o5-zH-DU2.normalTitle" = "Logga in";
 
 /* Class = "UILabel"; text = "Date"; ObjectID = "8mQ-YV-mLb"; */
 "8mQ-YV-mLb.text" = "Datum";
@@ -16,6 +22,18 @@
 /* Class = "UILabel"; text = "Minutes:"; ObjectID = "56w-it-c67"; */
 "56w-it-c67.text" = "Minuter:";
 
+/* Class = "UILabel"; text = "Total break"; ObjectID = "328-Y5-DYp"; */
+"328-Y5-DYp.text" = "Total rast";
+
+/* Class = "UILabel"; text = "Abscent"; ObjectID = "ABS-Ym-MsP"; */
+"ABS-Ym-MsP.text" = "Frånvarande";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "GSF-zp-ZZD"; */
+"GSF-zp-ZZD.text" = "Datum";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "GsO-oe-9ts"; */
+"GsO-oe-9ts.text" = "Titel";
+
 /* Class = "UILabel"; text = "Started: 2017-02-10 13:30"; ObjectID = "HUD-Tq-Gg7"; */
 "HUD-Tq-Gg7.text" = "Började: 2017-02-10 13:30";
 
@@ -24,6 +42,9 @@
 
 /* Class = "UITableViewSection"; headerTitle = "Job information"; ObjectID = "MLM-Va-aOZ"; */
 "MLM-Va-aOZ.headerTitle" = "Jobbinformation";
+
+/* Class = "UILabel"; text = "Start time"; ObjectID = "Mje-8p-Uyc"; */
+"Mje-8p-Uyc.text" = "Starttid";
 
 /* Class = "UILabel"; text = "Break Hours:"; ObjectID = "NDX-QL-K7Z"; */
 "NDX-QL-K7Z.text" = "Rast Timmar:";
@@ -34,8 +55,14 @@
 /* Class = "UIButton"; normalTitle = "START BREAK"; ObjectID = "NTo-2d-Kfl"; */
 "NTo-2d-Kfl.normalTitle" = "STARTA RAST";
 
+/* Class = "UITableViewSection"; headerTitle = "Job information"; ObjectID = "Nd6-mS-hz7"; */
+"Nd6-mS-hz7.headerTitle" = "Jobbinformation";
+
 /* Class = "UILabel"; text = "End time"; ObjectID = "OY2-U8-6b1"; */
 "OY2-U8-6b1.text" = "Sluttid";
+
+/* Class = "UILabel"; text = "Title of job"; ObjectID = "Q0C-aF-DVS"; */
+"Q0C-aF-DVS.text" = "Titel på jobb";
 
 /* Class = "UITableViewSection"; headerTitle = "Notes"; ObjectID = "SlH-ir-Mkt"; */
 "SlH-ir-Mkt.headerTitle" = "Anteckningar";
@@ -52,14 +79,17 @@
 /* Class = "UINavigationItem"; title = "New Time Report"; ObjectID = "agg-fy-e93"; */
 "agg-fy-e93.title" = "Ny tidrapport";
 
-/* Class = "UILabel"; text = "No customer selected"; ObjectID = "ca3-Bt-P1N"; */
-"ca3-Bt-P1N.text" = "Ingen kund vald";
-
 /* Class = "UIButton"; normalTitle = "Take photo"; ObjectID = "dIt-Yx-g4k"; */
 "dIt-Yx-g4k.normalTitle" = "Ta foto";
 
+/* Class = "UILabel"; text = "End time"; ObjectID = "en8-aI-sec"; */
+"en8-aI-sec.text" = "Sluttid";
+
 /* Class = "UILabel"; text = "Label"; ObjectID = "fG5-fh-Qls"; */
 "fG5-fh-Qls.text" = "Etikett";
+
+/* Class = "UILabel"; text = "Customer"; ObjectID = "fhr-cD-E8J"; */
+"fhr-cD-E8J.text" = "Kund";
 
 /* Class = "UILabel"; text = "Registration is active"; ObjectID = "fwg-cU-eC9"; */
 "fwg-cU-eC9.text" = "Registrering är aktiv";
@@ -69,6 +99,9 @@
 
 /* Class = "UILabel"; text = "Timer is active - Click to view"; ObjectID = "gu2-Sx-pHY"; */
 "gu2-Sx-pHY.text" = "Timern är aktiv - Tryck för att visa";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "gyf-tb-Zjm"; */
+"gyf-tb-Zjm.placeholder" = "Lösenord";
 
 /* Class = "UIButton"; normalTitle = "START TIMER"; ObjectID = "hJt-er-ub2"; */
 "hJt-er-ub2.normalTitle" = "STARTA TIMERN";
@@ -82,11 +115,17 @@
 /* Class = "UILabel"; text = "Title"; ObjectID = "pvz-ra-FIj"; */
 "pvz-ra-FIj.text" = "Titel";
 
+/* Class = "UITableViewSection"; headerTitle = "Details"; ObjectID = "qKQ-4S-Lfy"; */
+"qKQ-4S-Lfy.headerTitle" = "Detaljer";
+
 /* Class = "UILabel"; text = "New report"; ObjectID = "qrc-yy-xAN"; */
 "qrc-yy-xAN.text" = "Ny rapport";
 
 /* Class = "UITableViewSection"; headerTitle = "Additional files"; ObjectID = "t8Z-5B-VqJ"; */
 "t8Z-5B-VqJ.headerTitle" = "Ytterligare filer";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "vwc-SY-vdg"; */
+"vwc-SY-vdg.placeholder" = "Användarnamn";
 
 /* Class = "UIButton"; normalTitle = "Library"; ObjectID = "y8H-nT-BNc"; */
 "y8H-nT-BNc.normalTitle" = "Bibliotek";

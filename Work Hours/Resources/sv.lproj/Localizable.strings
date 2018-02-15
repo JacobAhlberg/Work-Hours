@@ -1,8 +1,17 @@
+/* hours and */
+" hours and " = " timmar och ";
+
+/* minutes. */
+" minutes." = " minuter.";
+
 /* Are you sure? */
 "Are you sure?" = "Är du säker?";
 
 /* Break is active */
 "Break is active" = "Rast är aktiv";
+
+/* Break time: */
+"Break time: " = "Rasttid: ";
 
 /* Cancel */
 "Cancel" = "Avbryt";
@@ -19,7 +28,8 @@
 /* Do you want to discard current timer? */
 "Do you want to discard current timer?" = "Vill du kasta bort timern?";
 
-/* Done keyboard */
+/* Done (keyboard)
+   Done keyboard */
 "Done" = "Färdig";
 
 /* Register */
@@ -43,6 +53,12 @@
 /* Search for places */
 "Search for places" = "Sök efter platser";
 
+/* Something went wrong, please reload the page */
+"Something went wrong, please reload the page" = "Något gick fel, vänligen ladda om sidan";
+
 /* Timer has been stopped */
 "Timer has been stopped" = "Timern har stoppats";
+
+/* Working time: */
+"Working time: " = "Arbetad tid: ";
 
