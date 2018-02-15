@@ -97,15 +97,18 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     @IBAction func userBtnPressed(_ sender: Any) {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.warning)
         
         let alertVC = UIAlertController(title: NSLocalizedString("Log out", comment: "Log out"), message: NSLocalizedString("Do you wish to log out?", comment: "Do you wish to log out?"), preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .cancel, handler: nil)
         let okAction = UIAlertAction.init(title: NSLocalizedString("Log out", comment: "Log out"), style: .default) { (action) in
             do {
                 try Auth.auth().signOut()
-                self.navigationController?.pushViewController( LoginVC(), animated: false )
+                let authVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC
+                self.present(authVC!, animated: true, completion: nil)
             } catch {
-                print("error signing out")
+                print(error.localizedDescription)
             }
             
         }

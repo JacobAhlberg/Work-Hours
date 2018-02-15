@@ -30,8 +30,8 @@ class FirebaseManager {
                     let report = TimeReport(data: document.data())
                     fetchedReports.append(report)
                 }
+                SpinnerManager.shared.stopSpinner()
             }
-            SpinnerManager.shared.stopSpinner()
             handler(fetchedReports)
         }
     }
