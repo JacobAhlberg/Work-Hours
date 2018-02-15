@@ -27,8 +27,6 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FirebaseManager.instance.fetchCustomers()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(blankReportSegue), name: NSNotification.Name(rawValue: "NewTimeReport"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(timerSegue), name: NSNotification.Name(rawValue: "NewTimerStart"), object: nil)
