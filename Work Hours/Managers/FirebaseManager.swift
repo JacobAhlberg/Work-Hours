@@ -17,6 +17,8 @@ class FirebaseManager {
     
     func fetchTimeReports(handler: @escaping ([TimeReport]) -> ()) {
         
+        SpinnerManager.shared.startSpinner()
+        
         var fetchedReports: [TimeReport] = []
         guard let uid = user?.uid else { return }
         let reportsRef = db.collection("timeReports")
@@ -29,6 +31,7 @@ class FirebaseManager {
                     fetchedReports.append(report)
                 }
             }
+            SpinnerManager.shared.stopSpinner()
             handler(fetchedReports)
         }
     }

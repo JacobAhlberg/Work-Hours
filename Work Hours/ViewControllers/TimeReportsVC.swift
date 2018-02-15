@@ -18,6 +18,7 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var activeRegView: UIView!
     @IBOutlet weak var cityImg: UIImageView!
     
+    let window : UIWindow? = nil
     
     // MARK: - Variables
     var timeReportsArray: [TimeReport] = []
@@ -45,11 +46,7 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        SpinnerManager.shared.startSpinner()
-        
-        
         FirebaseManager.shared.fetchTimeReports { (timeReports) in
-            SpinnerManager.shared.stopSpinner()
             self.timeReportsArray = timeReports.sorted(by: { $0.date! < $1.date! })
             self.timeReportsTableView.reloadData()
             if !timeReports.isEmpty {
@@ -93,6 +90,26 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBAction func activeRegViewPressed(_ sender: Any) {
         performSegue(withIdentifier: "timerSegue", sender: nil)
     }
+    
+    @IBAction func userBtnPressed(_ sender: Any) {
+        
+        let alertVC = UIAlertController(title: NSLocalizedString("Log out", comment: "Log out"), message: NSLocalizedString("Do you wish to log out?", comment: "Do you wish to log out?"), preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .cancel, handler: nil)
+        let okAction = UIAlertAction.init(title: NSLocalizedString("Log out", comment: "Log out"), style: .default) { (action) in
+            do {
+                try Auth.auth().signOut()
+                self.navigationController?.pushViewController( LoginVC(), animated: false )
+            } catch {
+                print("error signing out")
+            }
+            
+        }
+        alertVC.addAction(okAction)
+        alertVC.addAction(cancelAction)
+        present(alertVC, animated: true, completion: nil)
+        
+    }
+    
     
     
     // MARK: - Functions
