@@ -15,11 +15,22 @@ class FirebaseManager {
     let db = Firestore.firestore()
     let user = Auth.auth().currentUser
     
-    func fetchTimeReports() {
-        guard let uid = user?.uid else { return }
-        let customersRef = db.collection("customers")
-//        customersRef.whereField(<#T##field: String##String#>, isEqualTo: <#T##Any#>)
+    func fetchTimeReports(handler: @escaping ([TimeReport]) -> ()) {
         
+        var fetchedReports: [TimeReport] = []
+        guard let uid = user?.uid else { return }
+        let reportsRef = db.collection("timeReports")
+        reportsRef.whereField("uid", isEqualTo: uid).getDocuments() { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let report = TimeReport(data: document.data())
+                    fetchedReports.append(report)
+                }
+            }
+            handler(fetchedReports)
+        }
     }
     
     func fetchCustomers() {

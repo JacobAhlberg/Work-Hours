@@ -20,7 +20,7 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     
     // MARK: - Variables
-    var timeReportsArray: [String] = []
+    var timeReportsArray: [TimeReport] = []
     
     // MARK: - Application runtime
     
@@ -38,6 +38,12 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             }
         }
         
+        FirebaseManager.instance.fetchTimeReports { (timeReports) in
+            self.timeReportsArray = timeReports
+            self.timeReportsTableView.reloadData()
+            self.showHideStartImage(empty: false)
+        }
+        
         // Ask for push permission
         PushManager.shared.requestAuthorization()
     }
@@ -46,10 +52,7 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         super.viewWillAppear(animated)
         
         if !timeReportsArray.isEmpty {
-            noTimeReportsLabel.isHidden = true
-            noTimeArrowImg.isHidden = true
-            timeReportsTableView.isHidden = false
-            cityImg.isHidden = true
+            showHideStartImage(empty: true)
         }
         
         if let defaultsDate = UserDefaults.standard.object(forKey: "timerStartValue") {
@@ -86,6 +89,13 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     // MARK: - Functions
     
+    func showHideStartImage(empty: Bool) {
+        noTimeReportsLabel.isHidden = !empty
+        noTimeArrowImg.isHidden = !empty
+        timeReportsTableView.isHidden = empty
+        cityImg.isHidden = !empty
+    }
+    
     @objc func blankReportSegue() {
         performSegue(withIdentifier: "newTimeReportSegue", sender: nil)
     }
@@ -106,6 +116,7 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
+        
     }
     
     // MARK: - Popover Delegate
