@@ -48,7 +48,7 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         SpinnerManager.shared.startSpinner()
         
         
-        FirebaseManager.instance.fetchTimeReports { (timeReports) in
+        FirebaseManager.shared.fetchTimeReports { (timeReports) in
             SpinnerManager.shared.stopSpinner()
             self.timeReportsArray = timeReports.sorted(by: { $0.date! < $1.date! })
             self.timeReportsTableView.reloadData()

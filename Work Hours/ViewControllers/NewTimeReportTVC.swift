@@ -157,7 +157,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         saveBtn.isEnabled = false
         cancelBtn.isEnabled = false
         
-        FirebaseManager.instance.saveData(data: data) { (success) in
+        FirebaseManager.shared.saveData(data: data) { (success) in
             if success {
                 SpinnerManager.shared.stopSpinner()
                 self.performSegue(withIdentifier: "unwindToStart", sender: nil)
