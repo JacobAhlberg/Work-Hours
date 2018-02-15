@@ -18,6 +18,7 @@
 		49B5B702202B5DAB00ED4897 /* NewTimeReportTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B5B701202B5DAB00ED4897 /* NewTimeReportTVC.swift */; };
 		49B5B704202B5F8A00ED4897 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B5B703202B5F8A00ED4897 /* MapVC.swift */; };
 		49D28237203568E2009FCC33 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D28236203568E2009FCC33 /* LoginVC.swift */; };
+		49D2823E2035812F009FCC33 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D2823D2035812F009FCC33 /* AuthManager.swift */; };
 		AC0C0C23202EF2EA009D2D43 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C22202EF2EA009D2D43 /* Buttons.swift */; };
 		AC0C0C25202F0DB1009D2D43 /* TimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C24202F0DB1009D2D43 /* TimerVC.swift */; };
 		AC0C0C28202F3136009D2D43 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C0C27202F3136009D2D43 /* Functions.swift */; };
@@ -43,6 +44,7 @@
 		49B5B701202B5DAB00ED4897 /* NewTimeReportTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTimeReportTVC.swift; sourceTree = "<group>"; };
 		49B5B703202B5F8A00ED4897 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		49D28236203568E2009FCC33 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		49D2823D2035812F009FCC33 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		625FE2B0A61982847559C32E /* Pods-Work Hours.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Work Hours.release.xcconfig"; path = "Pods/Target Support Files/Pods-Work Hours/Pods-Work Hours.release.xcconfig"; sourceTree = "<group>"; };
 		717B69E54BBAB2A6E05EF27A /* Pods-Work Hours.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Work Hours.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Work Hours/Pods-Work Hours.debug.xcconfig"; sourceTree = "<group>"; };
 		7C51D2C207BB45FB398CCB74 /* Pods_Work_Hours.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Work_Hours.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,17 +116,8 @@
 				49B5B6FD202B52F100ED4897 /* View */,
 				49B5B6FF202B530600ED4897 /* ViewControllers */,
 				49B5B6FC202B52E800ED4897 /* Resources */,
-				494ED1C4202B4C3D004C7CDD /* Database */,
 			);
 			path = "Work Hours";
-			sourceTree = "<group>";
-		};
-		494ED1C4202B4C3D004C7CDD /* Database */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Database;
-			path = Resources/Database;
 			sourceTree = "<group>";
 		};
 		49B5B6FC202B52E800ED4897 /* Resources */ = {
@@ -200,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				AC85E22420305C90009CE72A /* PushManager.swift */,
+				49D2823D2035812F009FCC33 /* AuthManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -364,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC0C0C23202EF2EA009D2D43 /* Buttons.swift in Sources */,
+				49D2823E2035812F009FCC33 /* AuthManager.swift in Sources */,
 				49154455202DDAC2001CC678 /* AdditionalFileCell.swift in Sources */,
 				AC0C0C28202F3136009D2D43 /* Functions.swift in Sources */,
 				491AADA720338002001C8265 /* LocationSearchTVC.swift in Sources */,
