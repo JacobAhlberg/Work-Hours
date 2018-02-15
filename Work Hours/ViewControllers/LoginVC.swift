@@ -53,7 +53,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             var email = typedInEmail.lowercased()
             email = email.trimmingCharacters(in: .whitespaces)
             
-            if password.count > 6 {
+            if password.count >= 6 {
                 AuthManager.instance.createNewAccount(newEmail: email, newPassword: password, handler: { (user, error) in
                     if let error = error {
                         if error.localizedDescription == "The email address is already in use by another account." {

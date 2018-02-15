@@ -57,12 +57,11 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         super.viewDidLoad()
         findUserLocation()
         
-        // TODO: CREATE DATEPICKER FOR CURRENT DATE
+        // Creates a UIDatePicker for currentDate, startDate and endDate
         let (datePicker, dateToolbar) = setCurrentDatePicker()
         dateTxf.inputAccessoryView = dateToolbar
         dateTxf.inputView = datePicker
         
-        // Creates a UIDatePicker for startDate and endDate
         let (startPicker, startToolbar) = setUpDatePicker(showStartTime: true)
         startTimeTxf.inputAccessoryView = startToolbar
         startTimeTxf.inputView = startPicker
