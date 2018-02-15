@@ -106,6 +106,11 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     
     @IBAction func saveBtnPressed(_ sender: Any) {
         var data: [String: Any?] = [:]
+        print("--------------\(date)")
+        print("--------------\(startTime)")
+        print("--------------\(endTime)")
+        print("--------------\(breakHourTxf.text)")
+        print("--------------\(breakMinutesTxf.text)")
         guard let date = date,
             let startTime = startTime,
             let endTime = endTime,
@@ -113,6 +118,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
             let minutesTxt = breakMinutesTxf.text,
             let customer = customerLbl.text
             else { return }
+        
         
         // Hours and minutes to seconds
         var seconds = 0
