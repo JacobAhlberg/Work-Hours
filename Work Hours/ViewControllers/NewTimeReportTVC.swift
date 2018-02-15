@@ -47,8 +47,8 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     let dateFormatter = DateFormatter()
     
     var date: Date?
-    var startTime: Date?
-    var endTime: Date?
+    var startTime = Date()
+    var endTime = Date()
     var breakTime: (Int, Int)?
     
     // MARK: - Application runtime
@@ -107,8 +107,6 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     @IBAction func saveBtnPressed(_ sender: Any) {
         var data: [String: Any?] = [:]
         guard let date = date,
-            let startTime = startTime,
-            let endTime = endTime,
             let hoursTxt = breakHourTxf.text,
             let minutesTxt = breakMinutesTxf.text,
             let customer = customerLbl.text
@@ -241,20 +239,12 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     }
     
     func setDataFromTimerVC() {
-        if let start = startTime {
-            dateTxf.text = dateFormatter.string(from: start)
-            date = start
-            startTime = start
-            dateFormatter.dateFormat = "HH:mm"
-            startTimeTxf.text = dateFormatter.string(from: start)
-        } else {
-            dateFormatter.dateFormat = "HH:mm"
-        }
+        dateTxf.text = dateFormatter.string(from: startTime)
+        date = startTime
+        dateFormatter.dateFormat = "HH:mm"
+        startTimeTxf.text = dateFormatter.string(from: startTime)
         
-        if let end = endTime {
-            endTime = end
-            endTimeTxf.text = dateFormatter.string(from: end)
-        }
+        endTimeTxf.text = dateFormatter.string(from: endTime)
         
         if let brake = breakTime {
             breakHourTxf.text = String(brake.0)
@@ -280,10 +270,8 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         dateTxf.text = dateFormatter.string(from: Date())
         picker.date = Date()
         date = Date()
-        if let start = startTime {
-            picker.date = start
-            date = start
-        }
+        picker.date = startTime
+        date = startTime
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
@@ -312,14 +300,11 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         toolbar.barTintColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
         
         if showStartTime {
-            if let start = startTime {
-                picker.date = start
-            }
-            print("--------------\(picker.date)")
+            picker.date = startTime
             picker.tag = 1
             picker.addTarget(self, action: #selector(handleUIDatePicker(sender:)), for: .valueChanged)
         } else {
-            if let end = endTime { picker.date = end }
+            picker.date = endTime
             picker.tag = 2
             picker.addTarget(self, action: #selector(handleUIDatePicker(sender:)), for: .valueChanged)
         }
