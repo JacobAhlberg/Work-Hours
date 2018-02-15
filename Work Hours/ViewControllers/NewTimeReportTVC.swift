@@ -119,7 +119,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
             for image in additionalFilesArray {
                 let imageName = NSUUID().uuidString
                 imageNames.append("\(imageName).png")
-                FirebaseManager.instance.uploadImages(name: imageName, image: image, handler: { (nameOfImage, error) in
+                FirebaseManager.shared.uploadImages(name: imageName, image: image, handler: { (nameOfImage, error) in
                     if let error = error {
                         print(error.localizedDescription)
                     }
@@ -129,7 +129,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         }
         
         func uploadAll() {
-            FirebaseManager.instance.saveData(data: data) { (success) in
+            FirebaseManager.shared.saveData(data: data) { (success) in
                 if success {
                     SpinnerManager.shared.stopSpinner()
                     self.performSegue(withIdentifier: "unwindToStart", sender: nil)
@@ -155,7 +155,6 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
                 if let hours = Int(hoursTxt), let minutes = Int(minutesTxt) {
                     seconds = (hours * 3600) + (minutes * 60 )
                 }
-                
                 
                 // Get location
                 var location = CLLocation()
