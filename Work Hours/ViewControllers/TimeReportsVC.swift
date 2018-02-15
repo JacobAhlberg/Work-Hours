@@ -82,6 +82,11 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             let popVC = segue.destination
             popVC.modalPresentationStyle = .popover
             popVC.popoverPresentationController?.delegate = self
+        } else if segue.identifier == "showTimeReportSegue" {
+            guard let activeVC = segue.destination as? ActiveTimeReportTVC else { return }
+            if let row = sender as? Int {
+                activeVC.activeReport = timeReportsArray[row]
+            }
         }
     }
     
@@ -156,6 +161,10 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showTimeReportSegue", sender: indexPath.row)
     }
     
     // MARK: - Popover Delegate
