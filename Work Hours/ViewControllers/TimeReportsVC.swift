@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
 
@@ -20,6 +21,8 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     // MARK: - Variables
     var timeReportsArray: [String] = []
+    
+    var user: User!
     
     
     // MARK: - Application runtime

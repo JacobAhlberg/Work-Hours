@@ -55,6 +55,8 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         super.viewDidLoad()
         findUserLocation()
         
+    
+        
         // Creates a UIDatePicker for startDate and endDate
         let (startPicker, startToolbar) = setUpDatePicker(showStartTime: true)
         startTimeTxf.inputAccessoryView = startToolbar
