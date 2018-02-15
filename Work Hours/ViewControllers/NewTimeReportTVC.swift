@@ -15,6 +15,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     
     // MARK: - IBOutles
     
+    @IBOutlet weak var cancelBtn: UIBarButtonItem!
     @IBOutlet weak var saveBtn: UIBarButtonItem!
     @IBOutlet weak var dateTxf: UITextField!
     @IBOutlet weak var titleTxf: UITextField!
@@ -154,6 +155,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         }
         
         saveBtn.isEnabled = false
+        cancelBtn.isEnabled = false
         
         FirebaseManager.instance.saveData(data: data) { (success) in
             if success {
@@ -163,6 +165,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
                 SpinnerManager.shared.stopSpinner()
                 print("You failed!")
                 self.saveBtn.isEnabled = true
+                self.cancelBtn.isEnabled = true
             }
         }
         

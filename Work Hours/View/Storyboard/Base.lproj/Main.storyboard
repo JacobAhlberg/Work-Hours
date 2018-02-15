@@ -913,6 +913,7 @@
                         <outlet property="breakHourTxf" destination="Njl-op-da4" id="6eo-Mq-D7f"/>
                         <outlet property="breakMLbl" destination="56w-it-c67" id="gWe-WP-uxG"/>
                         <outlet property="breakMinutesTxf" destination="3fi-Va-0HU" id="uMF-lD-Yw5"/>
+                        <outlet property="cancelBtn" destination="YAU-fe-ZyU" id="PQk-za-EwU"/>
                         <outlet property="customerLbl" destination="3wp-6z-v5u" id="w6d-Dt-GpP"/>
                         <outlet property="dateTxf" destination="l07-Hb-MQJ" id="Mke-vL-7yq"/>
                         <outlet property="endTimeLbl" destination="OY2-U8-6b1" id="5Lz-HZ-Zqz"/>
