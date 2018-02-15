@@ -64,7 +64,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         endTimeTxf.inputAccessoryView = endToolbar
         endTimeTxf.inputView = endPicker
         
-        self.hideKeyboardWhenTappedAround()
+        hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
