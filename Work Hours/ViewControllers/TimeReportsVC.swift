@@ -45,10 +45,16 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        SpinnerManager.shared.startSpinner()
+        
+        
         FirebaseManager.instance.fetchTimeReports { (timeReports) in
-            self.timeReportsArray = timeReports
+            SpinnerManager.shared.stopSpinner()
+            self.timeReportsArray = timeReports.sorted(by: { $0.date! < $1.date! })
             self.timeReportsTableView.reloadData()
-            self.showHideStartImage(empty: false)
+            if !timeReports.isEmpty {
+                self.showHideStartImage(empty: false)
+            }
         }
         
         if !timeReportsArray.isEmpty {
