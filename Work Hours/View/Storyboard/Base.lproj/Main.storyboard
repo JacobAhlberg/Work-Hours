@@ -919,6 +919,7 @@
                         <outlet property="endTimeTxf" destination="FHD-pQ-b4e" id="w71-dH-anh"/>
                         <outlet property="mapView" destination="WD0-b4-BH2" id="zk5-Mt-BOP"/>
                         <outlet property="notesTxv" destination="M0K-EW-nSC" id="6lI-vb-V0q"/>
+                        <outlet property="saveBtn" destination="UGe-w5-80t" id="ie4-wP-h9u"/>
                         <outlet property="startTimeLbl" destination="JNh-YJ-emS" id="CqS-hj-JZ9"/>
                         <outlet property="startTimeTxf" destination="vlm-Eq-y16" id="JDb-tb-Ba4"/>
                         <outlet property="titleLbl" destination="NMl-xk-qQ7" id="ohE-32-tgb"/>

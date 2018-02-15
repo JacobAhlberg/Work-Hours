@@ -15,6 +15,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     
     // MARK: - IBOutles
     
+    @IBOutlet weak var saveBtn: UIBarButtonItem!
     @IBOutlet weak var dateTxf: UITextField!
     @IBOutlet weak var titleTxf: UITextField!
     @IBOutlet weak var startTimeTxf: UITextField!
@@ -156,7 +157,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
                 self.performSegue(withIdentifier: "unwindToStart", sender: nil)
             } else {
                 print("You failed!")
-                saveBtn.isEnabled = true
+                self.saveBtn.isEnabled = true
             }
         }
         
