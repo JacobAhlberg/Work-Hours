@@ -46,8 +46,8 @@ class LoginVC: UIViewController {
     
     func setMotion() {
         let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
-        horizontalMotionEffect.minimumRelativeValue = -300
-        horizontalMotionEffect.maximumRelativeValue = 300
+        horizontalMotionEffect.minimumRelativeValue = -100
+        horizontalMotionEffect.maximumRelativeValue = 100
         let motionEffectGroup = UIMotionEffectGroup()
         motionEffectGroup.motionEffects = [horizontalMotionEffect]
         backgroundImageView.addMotionEffect(motionEffectGroup)
