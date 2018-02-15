@@ -19,6 +19,7 @@ struct TimeReport {
     private(set) public var customer: String?
     private(set) public var location: CLLocation?
     private(set) public var notes: String?
+    private(set) public var images: [String]?
     
     init(data: [String : Any]) {
         abscent = data["abscent"] as? Bool
@@ -30,6 +31,7 @@ struct TimeReport {
         customer = data["customer"] as? String
         location = data["location"] as? CLLocation
         notes = data["notes"] as? String
+        images = data["images"] as? [String]
     }
 }
 
