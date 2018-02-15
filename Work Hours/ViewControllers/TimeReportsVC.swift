@@ -115,8 +115,16 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
         
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "timeReportCell") as? TimeReportsCell else { return UITableViewCell() }
+        if let title = timeReportsArray[indexPath.row].title { cell.titleJobLbl.text = title }
+        if let date = timeReportsArray[indexPath.row].date {
+            let dateFormat = DateFormatter()
+            dateFormat.dateFormat = "YYMMdd"
+            cell.dateLbl.text = dateFormat.string(from: date)
+        }
+        
+        return cell
     }
     
     // MARK: - Popover Delegate
@@ -124,8 +132,6 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
     }
-    
-
 
 }
 
