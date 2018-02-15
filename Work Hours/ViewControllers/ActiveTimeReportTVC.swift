@@ -78,7 +78,14 @@ class ActiveTimeReportTVC: UITableViewController, UICollectionViewDataSource, UI
     // IB Actions
     @IBAction func deleteBtnPressed(_ sender: Any) {
         
-        self.navigationController?.popViewController(animated: true)
+        let alertVC = UIAlertController(title: NSLocalizedString("Delete", comment: "Delete"), message: NSLocalizedString("Are you sure you want to delete this?", comment: "Are you sure you want to delete this?"), preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .cancel, handler: nil)
+        let okAction = UIAlertAction.init(title: NSLocalizedString("Delete", comment: "Delete"), style: .destructive) { (action) in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alertVC.addAction(okAction)
+        alertVC.addAction(cancelAction)
+        present(alertVC, animated: true, completion: nil)
     }
     
     
