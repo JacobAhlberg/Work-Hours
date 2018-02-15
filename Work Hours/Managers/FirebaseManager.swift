@@ -53,9 +53,16 @@ class FirebaseManager {
         
     }
     
-    func saveData(data : [String: Any?], handler: @escaping () -> ()) {
+    func saveData(data : [String: Any?], handler: @escaping (Bool) -> ()) {
         let timeReportRef = db.collection("timeReports")
-        timeReportRef.addDocument(data: data)
+        timeReportRef.addDocument(data: data) { error in
+            if let error = error {
+                print("Error adding document: \(error)")
+                handler(false)
+            } else {
+                handler(true)
+            }
+        }
     }
 }
 

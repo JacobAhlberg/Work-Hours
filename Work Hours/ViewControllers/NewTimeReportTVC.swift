@@ -149,8 +149,15 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
             ]
         }
         
-        FirebaseManager.instance.saveData(data: data) {
-            print("I did it")
+        saveBtn.isEnabled = false
+        
+        FirebaseManager.instance.saveData(data: data) { (success) in
+            if success {
+                self.performSegue(withIdentifier: "unwindToStart", sender: nil)
+            } else {
+                print("You failed!")
+                saveBtn.isEnabled = true
+            }
         }
         
         // TODO: Save images
@@ -212,29 +219,35 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
             endTimeTxf.isEnabled = false
             breakHourTxf.isEnabled = false
             breakMinutesTxf.isEnabled = false
+            titleTxf.isEnabled = false
             
             startTimeLbl.alpha = 0.3
             endTimeLbl.alpha = 0.3
             breakHLbl.alpha = 0.3
             breakMLbl.alpha = 0.3
+            titleLbl.alpha = 0.3
             
             startTimeTxf.alpha = 0.3
             endTimeTxf.alpha = 0.3
             breakHourTxf.alpha = 0.3
             breakMinutesTxf.alpha = 0.3
+            titleTxf.alpha = 0.3
         } else {
             startTimeTxf.isEnabled = true
             endTimeTxf.isEnabled = true
             breakHourTxf.isEnabled = true
             breakMinutesTxf.isEnabled = true
+            titleTxf.isEnabled = true
             startTimeTxf.alpha = 1
             endTimeTxf.alpha = 1
             breakHourTxf.alpha = 1
             breakMinutesTxf.alpha = 1
+            titleTxf.alpha = 1
             startTimeLbl.alpha = 1
             endTimeLbl.alpha = 1
             breakHLbl.alpha = 1
             breakMLbl.alpha = 1
+            titleLbl.alpha = 1
         }
     }
     
