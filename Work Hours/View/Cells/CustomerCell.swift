@@ -11,6 +11,7 @@ import UIKit
 class CustomerCell: UITableViewCell {
 
     @IBOutlet weak var customerName: UILabel!
+    @IBOutlet weak var addCustomerBtn: UIButton!
     
     @IBAction func addCustomerBtnPressed() {
         if let name = customerName.text {

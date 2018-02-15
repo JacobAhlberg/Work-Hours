@@ -777,6 +777,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addCustomerBtn" destination="rtZ-hK-JuR" id="URR-Jp-SBY"/>
                                             <outlet property="customerName" destination="fG5-fh-Qls" id="zMw-6C-4ZC"/>
                                         </connections>
                                     </tableViewCell>
