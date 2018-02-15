@@ -93,7 +93,7 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         noTimeReportsLabel.isHidden = !empty
         noTimeArrowImg.isHidden = !empty
         timeReportsTableView.isHidden = empty
-        cityImg.isHidden = !empty
+//        cityImg.isHidden = !empty
     }
     
     @objc func blankReportSegue() {
