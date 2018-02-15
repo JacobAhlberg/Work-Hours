@@ -38,18 +38,18 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             }
         }
         
-        FirebaseManager.instance.fetchTimeReports { (timeReports) in
-            self.timeReportsArray = timeReports
-            self.timeReportsTableView.reloadData()
-            self.showHideStartImage(empty: false)
-        }
-        
         // Ask for push permission
         PushManager.shared.requestAuthorization()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        FirebaseManager.instance.fetchTimeReports { (timeReports) in
+            self.timeReportsArray = timeReports
+            self.timeReportsTableView.reloadData()
+            self.showHideStartImage(empty: false)
+        }
         
         if !timeReportsArray.isEmpty {
             showHideStartImage(empty: true)
@@ -119,7 +119,13 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "timeReportCell") as? TimeReportsCell else { return UITableViewCell() }
-        if let title = timeReportsArray[indexPath.row].title { cell.titleJobLbl.text = title }
+        if let abscent = timeReportsArray[indexPath.row].abscent {
+            if abscent {
+                cell.titleJobLbl.text = NSLocalizedString("Abscent this day", comment: "Abscent this day")
+            } else {
+                if let title = timeReportsArray[indexPath.row].title { cell.titleJobLbl.text = title }
+            }
+        }
         if let date = timeReportsArray[indexPath.row].date {
             let dateFormat = DateFormatter()
             dateFormat.dateFormat = "YYMMdd"
