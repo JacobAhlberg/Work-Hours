@@ -106,6 +106,9 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     // MARK: - IBActions
     
     @IBAction func saveBtnPressed(_ sender: Any) {
+        
+        SpinnerManager.shared.startSpinner()
+        
         var data: [String: Any?] = [:]
         guard let date = date,
             let hoursTxt = breakHourTxf.text,
@@ -154,8 +157,10 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         
         FirebaseManager.instance.saveData(data: data) { (success) in
             if success {
+                SpinnerManager.shared.stopSpinner()
                 self.performSegue(withIdentifier: "unwindToStart", sender: nil)
             } else {
+                SpinnerManager.shared.stopSpinner()
                 print("You failed!")
                 self.saveBtn.isEnabled = true
             }

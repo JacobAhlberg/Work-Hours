@@ -33,6 +33,7 @@
 		AC8493D22034BB3A00DEF489 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AC8493D42034BB3A00DEF489 /* InfoPlist.strings */; };
 		AC85E22520305C90009CE72A /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC85E22420305C90009CE72A /* PushManager.swift */; };
 		ACF654DA2036066000C0C9CB /* TimeReportsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF654D92036066000C0C9CB /* TimeReportsCell.swift */; };
+		ACF654DC20361E4600C0C9CB /* SpinnerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF654DB20361E4600C0C9CB /* SpinnerManager.swift */; };
 		AFDF28CDFEEF0A453C5288F1 /* Pods_Work_Hours.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C51D2C207BB45FB398CCB74 /* Pods_Work_Hours.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		AC8493D32034BB3A00DEF489 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AC85E22420305C90009CE72A /* PushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushManager.swift; sourceTree = "<group>"; };
 		ACF654D92036066000C0C9CB /* TimeReportsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeReportsCell.swift; sourceTree = "<group>"; };
+		ACF654DB20361E4600C0C9CB /* SpinnerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 				AC85E22420305C90009CE72A /* PushManager.swift */,
 				49D2823D2035812F009FCC33 /* AuthManager.swift */,
 				49D43D5D2035BFFC008FA8B3 /* FirebaseManager.swift */,
+				ACF654DB20361E4600C0C9CB /* SpinnerManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 			files = (
 				AC0C0C23202EF2EA009D2D43 /* Buttons.swift in Sources */,
 				49D2823E2035812F009FCC33 /* AuthManager.swift in Sources */,
+				ACF654DC20361E4600C0C9CB /* SpinnerManager.swift in Sources */,
 				49154455202DDAC2001CC678 /* AdditionalFileCell.swift in Sources */,
 				AC0C0C28202F3136009D2D43 /* Functions.swift in Sources */,
 				49D43D6920361502008FA8B3 /* ActiveTimeReportTVC.swift in Sources */,
