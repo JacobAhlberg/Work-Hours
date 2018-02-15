@@ -6,7 +6,7 @@
 //  Copyright © 2018 Jacob Ahlberg. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Firebase
 
 class FirebaseManager {
@@ -50,7 +50,6 @@ class FirebaseManager {
                 handler(customers)
             }
         }
-        
     }
     
     func saveData(data : [String: Any?], handler: @escaping (Bool) -> ()) {
@@ -62,6 +61,20 @@ class FirebaseManager {
             } else {
                 handler(true)
             }
+        }
+    }
+    
+    func uploadImages(name: String, image: UIImage, handler: @escaping (_ name: String?, Error?) -> ()) {
+        let storageRef = Firebase.Storage.storage().reference().child("\(name).png")
+        if let uploadData = UIImagePNGRepresentation(image) {
+            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    handler(nil, error)
+                } else {
+                    handler(name, nil)
+                }
+            })
         }
     }
 }

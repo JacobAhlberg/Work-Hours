@@ -109,68 +109,87 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     @IBAction func saveBtnPressed(_ sender: Any) {
         
         SpinnerManager.shared.startSpinner()
-        
-        var data: [String: Any?] = [:]
-        guard let date = date,
-            let hoursTxt = breakHourTxf.text,
-            let minutesTxt = breakMinutesTxf.text,
-            let customer = customerLbl.text
-            else { return }
-        
-        // Hours and minutes to seconds
-        var seconds = 0
-        if let hours = Int(hoursTxt), let minutes = Int(minutesTxt) {
-            seconds = (hours * 3600) + (minutes * 60 )
-        }
-        
-        
-        // Get location
-        var location = CLLocation()
-        if let workLocation = workLocation {
-            location = workLocation
-        } else if let workLocation =  userCurrentLocation {
-            location = workLocation
-        }
-        
-        // If abscentBtn is active
-        if abscentBtn.isOn {
-            data = [
-                "date" : date,
-                "abscent" : true,
-                "uid" : Auth.auth().currentUser?.uid
-            ]
-        } else {
-            data = [
-                "date" : date,
-                "title" : titleTxf.text,
-                "startTime" : startTime,
-                "endTime" : endTime,
-                "breakTime" : seconds,
-                "abscent" : false,
-                "customer" : customer,
-                "location" : GeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude),
-                "notes" : notesTxv.text,
-                "uid" : Auth.auth().currentUser?.uid
-            ]
-        }
-        
         saveBtn.isEnabled = false
         cancelBtn.isEnabled = false
         
-        FirebaseManager.instance.saveData(data: data) { (success) in
-            if success {
-                SpinnerManager.shared.stopSpinner()
-                self.performSegue(withIdentifier: "unwindToStart", sender: nil)
-            } else {
-                SpinnerManager.shared.stopSpinner()
-                print("You failed!")
-                self.saveBtn.isEnabled = true
-                self.cancelBtn.isEnabled = true
+        var data: [String: Any?] = [:]
+        var imageNames: [String] = []
+        
+        func uploadImages(handler: @escaping (Bool) -> ()) {
+            for image in additionalFilesArray {
+                let imageName = NSUUID().uuidString
+                imageNames.append("\(imageName).png")
+                FirebaseManager.instance.uploadImages(name: imageName, image: image, handler: { (nameOfImage, error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                })
+            }
+            handler(true)
+        }
+        
+        func uploadAll() {
+            FirebaseManager.instance.saveData(data: data) { (success) in
+                if success {
+                    SpinnerManager.shared.stopSpinner()
+                    self.performSegue(withIdentifier: "unwindToStart", sender: nil)
+                } else {
+                    SpinnerManager.shared.stopSpinner()
+                    print("You failed!")
+                    self.saveBtn.isEnabled = true
+                    self.cancelBtn.isEnabled = true
+                }
             }
         }
         
-        // TODO: Save images
-        // TODO: Send back to front page
+        uploadImages { (success) in
+            if success {
+                guard let date = self.date,
+                    let hoursTxt = self.breakHourTxf.text,
+                    let minutesTxt = self.breakMinutesTxf.text,
+                    let customer = self.customerLbl.text
+                    else { return }
+                
+                // Hours and minutes to seconds
+                var seconds = 0
+                if let hours = Int(hoursTxt), let minutes = Int(minutesTxt) {
+                    seconds = (hours * 3600) + (minutes * 60 )
+                }
+                
+                
+                // Get location
+                var location = CLLocation()
+                if let workLocation = self.workLocation {
+                    location = workLocation
+                } else if let workLocation =  self.userCurrentLocation {
+                    location = workLocation
+                }
+                
+                // If abscentBtn is active
+                if self.abscentBtn.isOn {
+                    data = [
+                        "date" : date,
+                        "abscent" : true,
+                        "uid" : Auth.auth().currentUser?.uid
+                    ]
+                } else {
+                    data = [
+                        "date" : date,
+                        "title" : self.titleTxf.text,
+                        "startTime" : self.startTime,
+                        "endTime" : self.endTime,
+                        "breakTime" : seconds,
+                        "abscent" : false,
+                        "customer" : customer,
+                        "location" : GeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude),
+                        "notes" : self.notesTxv.text,
+                        "images" : imageNames,
+                        "uid" : Auth.auth().currentUser?.uid
+                    ]
+                }
+                uploadAll()
+            }
+        }
     }
     
     
