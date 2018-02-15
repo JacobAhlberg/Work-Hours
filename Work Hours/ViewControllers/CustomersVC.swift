@@ -23,7 +23,7 @@ class CustomersVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     override func viewDidLoad() {
         super.viewDidLoad()
         print(customers.count)
-        FirebaseManager.instance.fetchCustomers { (fetchedCustomers) in
+        FirebaseManager.shared.fetchCustomers { (fetchedCustomers) in
             if let fetchedCustomers = fetchedCustomers {
                 self.customers = fetchedCustomers
                 print(self.customers.count)

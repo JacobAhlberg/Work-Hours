@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 class AuthManager {
-    static var instance = AuthManager()
+    static var shared = AuthManager()
     
     // Create a new user
     func createNewAccount(newEmail email: String, newPassword password: String, handler: @escaping (_ newUser: User?, _ error: Error?) -> ()) {

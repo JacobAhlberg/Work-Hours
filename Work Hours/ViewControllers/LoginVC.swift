@@ -54,10 +54,10 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             email = email.trimmingCharacters(in: .whitespaces)
             
             if password.count >= 6 {
-                AuthManager.instance.createNewAccount(newEmail: email, newPassword: password, handler: { (user, error) in
+                AuthManager.shared.createNewAccount(newEmail: email, newPassword: password, handler: { (user, error) in
                     if let error = error {
                         if error.localizedDescription == "The email address is already in use by another account." {
-                            AuthManager.instance.signInUser(email: email, password: password, handler: { (user, error) in
+                            AuthManager.shared.signInUser(email: email, password: password, handler: { (user, error) in
                                 if let error = error {
                                     print(error)
                                 } else {
@@ -69,7 +69,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                             self.showAlert(messageForUser: error.localizedDescription)
                         }
                     } else {
-                        AuthManager.instance.signInUser(email: email, password: password, handler: { (user, error) in
+                        AuthManager.shared.signInUser(email: email, password: password, handler: { (user, error) in
                             if let error = error {
                                 print(error)
                             } else {

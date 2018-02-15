@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class FirebaseManager {
-    static var instance = FirebaseManager()
+    static var shared = FirebaseManager()
     
     let db = Firestore.firestore()
     let user = Auth.auth().currentUser
