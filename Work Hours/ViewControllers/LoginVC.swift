@@ -27,17 +27,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         setMotion()
     }
     
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "TimeReportsVCSegue" {
-            if let timeReportsVC = segue.destination as? TimeReportsVC {
-                timeReportsVC.user = sender as! User
-            }
-            
-        }
-    }
-    
     // MARK: - Rotations
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -71,7 +60,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                                 if let error = error {
                                     print(error)
                                 } else {
-                                    self.performSegue(withIdentifier: "TimeReportsVCSegue", sender: user)
+                                    self.performSegue(withIdentifier: "TimeReportsVCSegue", sender: nil)
                                 }
                                 
                             })
@@ -83,7 +72,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                             if let error = error {
                                 print(error)
                             } else {
-                                self.performSegue(withIdentifier: "TimeReportsVCSegue", sender: user)
+                                self.performSegue(withIdentifier: "TimeReportsVCSegue", sender: nil)
                             }
                             
                         })

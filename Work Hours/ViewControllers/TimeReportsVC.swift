@@ -22,7 +22,7 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     // MARK: - Variables
     var timeReportsArray: [String] = []
     
-    var user: User!
+    var user = Auth.auth().currentUser
     
     
     // MARK: - Application runtime
