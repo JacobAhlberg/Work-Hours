@@ -16,13 +16,16 @@ class FirebaseManager {
     let user = Auth.auth().currentUser
     
     func fetchTimeReports() {
-//        let userRef = db.collection("users").document(uid)
+        guard let uid = user?.uid else { return }
+        let customersRef = db.collection("customers")
+//        customersRef.whereField(<#T##field: String##String#>, isEqualTo: <#T##Any#>)
         
     }
     
     func fetchCustomers() {
+        guard let uid = user?.uid else { return }
+        let customersRef = db.collection("customers")
         
-//        guard let uid = user?.uid else { return }
     }
     
     func saveData(data : [String: Any?] ,handler: @escaping () -> ()) {

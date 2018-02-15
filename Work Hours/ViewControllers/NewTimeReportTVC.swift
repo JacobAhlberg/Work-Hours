@@ -46,6 +46,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     
     let dateFormatter = DateFormatter()
     
+    var date: Date?
     var startTime: Date?
     var endTime: Date?
     var breakTime: (Int, Int)?
@@ -57,7 +58,9 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         findUserLocation()
         
         // TODO: CREATE DATEPICKER FOR CURRENT DATE
-        
+        let (datePicker, dateToolbar) = setCurrentDatePicker()
+        dateTxf.inputAccessoryView = dateToolbar
+        dateTxf.inputView = datePicker
         
         // Creates a UIDatePicker for startDate and endDate
         let (startPicker, startToolbar) = setUpDatePicker(showStartTime: true)
@@ -74,7 +77,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         additionalFileCollectionView.reloadData()
-        currentDate()
+        //        currentDate()
         setDataFromTimerVC()
         
         if let workLocation = workLocation {
@@ -105,7 +108,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     
     @IBAction func saveBtnPressed(_ sender: Any) {
         var data: [String: Any?] = [:]
-        guard let dateText = dateTxf.text,
+        guard let date = date,
             let startTime = startTimeTxf.text,
             let endTime = endTimeTxf.text,
             let hoursTxt = breakHourTxf.text,
@@ -114,13 +117,14 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
             else { return }
         
         // Hours and minutes to seconds
-        guard let hours = Int(hoursTxt),
-            let minutes = Int(minutesTxt)
-            else {
-                showAlert(messageForUser: NSLocalizedString("Hours and minutes can only contain numbers", comment: "Hours and minutes can only contain numbers"))
-                return
+        var seconds = 0
+        if let hours = Int(hoursTxt), let minutes = Int(minutesTxt) {
+            seconds = (hours * 3600) + (minutes * 60 )
+//            if !abscentBtn.isOn && hoursTxt.count < 1 && minutesTxt.count < 1 {
+//                showAlert(messageForUser: NSLocalizedString("Hours and minutes can only contain numbers", comment: "Hours and minutes can only contain numbers"))
+//            }
         }
-        let seconds = (hours * 3600) + (minutes * 60 )
+        
         
         // Get location
         var location = CLLocation()
@@ -133,13 +137,13 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         // If abscentBtn is active
         if abscentBtn.isOn {
             data = [
-                "date" : dateFormatter.date(from: dateText),
+                "date" : date,
                 "abscent" : true,
-                "uid" : Auth.auth().currentUser
+                "uid" : Auth.auth().currentUser?.uid
             ]
         } else {
             data = [
-                "date" : dateFormatter.date(from: dateText),
+                "date" : date,
                 "title" : titleTxf.text,
                 "startTime" : dateFormatter.date(from: startTime),
                 "endTime" : dateFormatter.date(from: endTime),
@@ -179,7 +183,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         if sender.isOn { userIsAbscent(userIsAbscent: true) }
         else { userIsAbscent(userIsAbscent: false) }
     }
-
+    
     
     @IBAction func tappedMap(_ sender: Any) {
         performSegue(withIdentifier: "mapSegue", sender: nil)
@@ -207,8 +211,6 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     
     
     // MARK: - Functions
-    
-    
     
     func userIsAbscent(userIsAbscent abscent: Bool) {
         if abscent {
@@ -242,11 +244,6 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         }
     }
     
-    func currentDate() {
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateTxf.text = dateFormatter.string(from: Date())
-    }
-    
     func setDataFromTimerVC() {
         if let start = startTime {
             dateTxf.text = dateFormatter.string(from: start)
@@ -277,6 +274,30 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         }
     }
     
+    func setCurrentDatePicker() -> (UIDatePicker, UIToolbar) {
+        let picker = UIDatePicker()
+        picker.datePickerMode = .date
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateTxf.text = dateFormatter.string(from: Date())
+        picker.date = Date()
+        date = Date()
+        if let start = startTime {
+            picker.date = start
+            date = start
+        }
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        // Custom navigatation bar buttons for the keyboard
+        let doneBtn = UIBarButtonItem(title: NSLocalizedString("Done", comment: "Done keyboard"), style: .done, target: self, action: #selector(dismissKeyboard))
+        toolbar.setItems([doneBtn], animated: false)
+        toolbar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        toolbar.barTintColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
+        
+        picker.addTarget(self, action: #selector(handleUIDatePicker(sender:)), for: .valueChanged)
+        return (picker, toolbar)
+    }
+    
     // New UIDatePicker for TextFields
     func setUpDatePicker(showStartTime: Bool) -> (UIDatePicker, UIToolbar) {
         let picker = UIDatePicker()
@@ -304,13 +325,24 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
         return (picker, toolbar)
     }
     
-    // Checks if value has changed on
+    // Checks if value has changed on uiDatePickers
+    
     @objc func handleUIDatePicker(sender: UIDatePicker) {
         dateFormatter.dateFormat = "HH:mm"
-        if sender.tag == 1 { startTimeTxf.text = dateFormatter.string(from: sender.date) }
-        else { endTimeTxf.text = dateFormatter.string(from: sender.date) }
-        
+        if sender.tag == 1 {
+            startTimeTxf.text = dateFormatter.string(from: sender.date)
+            date = sender.date
+        } else if sender.tag == 2 {
+            endTimeTxf.text = dateFormatter.string(from: sender.date)
+            date = sender.date
+        } else {
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateTxf.text = dateFormatter.string(from: sender.date)
+            date = sender.date
+        }
     }
+    
+    
     
     // MARK: - TextField delegates
     
@@ -369,7 +401,7 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets.zero
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
