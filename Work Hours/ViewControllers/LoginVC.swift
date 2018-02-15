@@ -18,17 +18,22 @@ class LoginVC: UIViewController {
     // MARK: - Application runtime
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         
         // Setup dynamic background (horizontally)
-        let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
-        horizontalMotionEffect.minimumRelativeValue = -300
-        horizontalMotionEffect.maximumRelativeValue = 300
-        let motionEffectGroup = UIMotionEffectGroup()
-        motionEffectGroup.motionEffects = [horizontalMotionEffect]
-        backgroundImageView.addMotionEffect(motionEffectGroup)
-        
-        hideKeyboardWhenTappedAround()
-
+        setMotion()
+    }
+    
+    // MARK: - Rotations
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDevice.current.orientation == .portrait {
+            setMotion()
+        } else {
+            for effect in backgroundImageView.motionEffects {
+                backgroundImageView.removeMotionEffect(effect)
+            }
+        }
     }
     
     // MARK: - IBActions
@@ -39,6 +44,14 @@ class LoginVC: UIViewController {
     
     // MARK: - Functions
     
+    func setMotion() {
+        let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
+        horizontalMotionEffect.minimumRelativeValue = -300
+        horizontalMotionEffect.maximumRelativeValue = 300
+        let motionEffectGroup = UIMotionEffectGroup()
+        motionEffectGroup.motionEffects = [horizontalMotionEffect]
+        backgroundImageView.addMotionEffect(motionEffectGroup)
+    }
     
 
 }

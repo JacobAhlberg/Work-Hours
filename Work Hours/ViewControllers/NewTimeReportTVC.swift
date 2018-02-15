@@ -313,5 +313,6 @@ class NewTimeReportTVC: UITableViewController, CLLocationManagerDelegate, MKMapV
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 3
-    }    
+    }
+    
 }

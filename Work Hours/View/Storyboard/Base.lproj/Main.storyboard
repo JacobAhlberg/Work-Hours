@@ -1098,10 +1098,10 @@
                             <constraint firstItem="oxb-0f-YKs" firstAttribute="leading" secondItem="dkO-uX-Iby" secondAttribute="leading" constant="40" id="91a-Tc-HYm"/>
                             <constraint firstItem="rwD-AQ-vrg" firstAttribute="top" secondItem="wQT-WJ-uhZ" secondAttribute="top" id="N5S-df-Uqe"/>
                             <constraint firstItem="oxb-0f-YKs" firstAttribute="centerY" secondItem="wQT-WJ-uhZ" secondAttribute="centerY" id="S7M-Be-799"/>
-                            <constraint firstItem="rwD-AQ-vrg" firstAttribute="trailing" secondItem="dkO-uX-Iby" secondAttribute="trailing" id="mL9-ek-2Yj"/>
+                            <constraint firstItem="rwD-AQ-vrg" firstAttribute="trailing" secondItem="wQT-WJ-uhZ" secondAttribute="trailing" id="mL9-ek-2Yj"/>
                             <constraint firstItem="dkO-uX-Iby" firstAttribute="trailing" secondItem="oxb-0f-YKs" secondAttribute="trailing" constant="40" id="nj4-Sg-6R4"/>
                             <constraint firstAttribute="bottom" secondItem="rwD-AQ-vrg" secondAttribute="bottom" id="puc-OM-zcF"/>
-                            <constraint firstItem="rwD-AQ-vrg" firstAttribute="leading" secondItem="dkO-uX-Iby" secondAttribute="leading" id="vAX-z5-Y2p"/>
+                            <constraint firstItem="rwD-AQ-vrg" firstAttribute="leading" secondItem="wQT-WJ-uhZ" secondAttribute="leading" id="vAX-z5-Y2p"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dkO-uX-Iby"/>
                     </view>
