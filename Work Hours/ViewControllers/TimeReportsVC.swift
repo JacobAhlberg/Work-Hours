@@ -72,6 +72,8 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     // MARK: - Navigation
     
+    @IBAction func unwindToStart(segue: UIStoryboardSegue) { }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "popoverSegue" {
             let popVC = segue.destination
