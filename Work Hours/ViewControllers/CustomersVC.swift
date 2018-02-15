@@ -45,8 +45,6 @@ class CustomersVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         }
     }
     
-    // MARK: - Functions
-    
     
     // MARK: - TableView Delegate & Datasourcwe
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
