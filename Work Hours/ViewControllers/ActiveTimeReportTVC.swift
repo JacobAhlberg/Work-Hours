@@ -30,6 +30,7 @@ class ActiveTimeReportTVC: UITableViewController, UICollectionViewDataSource, UI
     let dateFormatter = DateFormatter()
     
     var imagesNames: [String] = []
+    var iteration: Int = 0
     
     // MARK: - Application runtime
     
@@ -78,6 +79,9 @@ class ActiveTimeReportTVC: UITableViewController, UICollectionViewDataSource, UI
     // IB Actions
     @IBAction func deleteBtnPressed(_ sender: Any) {
         
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.warning)
+        
         let alertVC = UIAlertController(title: NSLocalizedString("Delete", comment: "Delete"), message: NSLocalizedString("Are you sure you want to delete this?", comment: "Are you sure you want to delete this?"), preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .cancel, handler: nil)
         let okAction = UIAlertAction.init(title: NSLocalizedString("Delete", comment: "Delete"), style: .destructive) { (action) in
@@ -88,33 +92,33 @@ class ActiveTimeReportTVC: UITableViewController, UICollectionViewDataSource, UI
         present(alertVC, animated: true, completion: nil)
     }
     
-    
-    
     // MARK: - Delegates
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "activeImage", for: indexPath) as? ActiveTimeReportImageCell else { return UICollectionViewCell() }
-        
-        let storageRef = Storage.storage().reference()
-        let imageloadRef = storageRef.child(imagesNames[indexPath.row])
-        imageloadRef.getData(maxSize: 10 * 1024 * 1024) { (data, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                if let data = data {
-                    cell.imageView.image = UIImage(data: data)
-                    collectionView.reloadData()
-                }
-            }
-        }
-        return cell
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imagesNames.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "activeImage", for: indexPath) as? ActiveTimeReportImageCell else { return UICollectionViewCell() }
+        let storageRef = Storage.storage().reference()
+        let imageloadRef = storageRef.child(imagesNames[indexPath.row])
+        if iteration < imagesNames.count {
+            imageloadRef.getData(maxSize: 10 * 1024 * 1024) { (data, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    if let data = data {
+                        cell.imageView.image = UIImage(data: data)
+                        collectionView.reloadData()
+                    }
+                }
+            }
+            iteration += 1
+        }
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
