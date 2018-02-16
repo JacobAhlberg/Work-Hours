@@ -30,7 +30,6 @@ class ActiveTimeReportTVC: UITableViewController, UICollectionViewDataSource, UI
     let dateFormatter = DateFormatter()
     
     var imagesNames: [String] = []
-    var iteration: Int = 0
     
     // MARK: - Application runtime
     
@@ -105,7 +104,6 @@ class ActiveTimeReportTVC: UITableViewController, UICollectionViewDataSource, UI
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "activeImage", for: indexPath) as? ActiveTimeReportImageCell else { return UICollectionViewCell() }
         let storageRef = Storage.storage().reference()
         let imageloadRef = storageRef.child(imagesNames[indexPath.row])
-        if iteration < imagesNames.count {
             imageloadRef.getData(maxSize: 10 * 1024 * 1024) { (data, error) in
                 if let error = error {
                     print(error.localizedDescription)
@@ -115,8 +113,6 @@ class ActiveTimeReportTVC: UITableViewController, UICollectionViewDataSource, UI
                         collectionView.reloadData()
                     }
                 }
-            }
-            iteration += 1
         }
         return cell
     }
