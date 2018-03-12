@@ -51,6 +51,7 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             self.timeReportsTableView.reloadData()
             if !timeReports.isEmpty {
                 self.showHideStartImage(empty: false)
+                self.animateTable()
             }
         }
         
@@ -140,6 +141,26 @@ class TimeReportsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         performSegue(withIdentifier: "timerSegue", sender: nil)
     }
+    
+    func animateTable() {
+        timeReportsTableView.reloadData()
+        let cells = timeReportsTableView.visibleCells
+        let tableViewHeight = timeReportsTableView.bounds.size.height
+        
+        for cell in cells {
+            cell.transform = CGAffineTransform(translationX: 0, y: tableViewHeight)
+        }
+        
+        var delay: Double = 0
+        for cell in cells {
+            UIView.animate(withDuration: 0.5, delay: delay * 0.05, options: .curveEaseInOut, animations: {
+                cell.transform = .identity
+            }, completion: nil)
+            delay += 1
+        }
+        
+    }
+    
     
     // MARK: - UITableView DataSource & Delegate
     
